@@ -441,7 +441,6 @@
                       <th style="width: 30%">Komentar</th>
                       <th style="width: 30%">Komentar Bersih</th>
                       <th style="width: 14%">Sentiment</th>
-                      <th style="width: 14%">Prediksi NB</th>
                     </tr>
                   </thead>
                   <tbody id="redditTableBody">
@@ -691,9 +690,7 @@
               <td><span class="badge ${getSentimentColor(row.sentiment)}">${
             row.sentiment
           }</span></td>
-              <td><span class="badge ${getSentimentColor(
-                row.sentiment_prediksi_nb
-              )}">${row.sentiment_prediksi_nb}</span></td>
+              
             </tr>
           `;
         });
