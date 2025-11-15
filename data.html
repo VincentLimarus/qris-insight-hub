@@ -1,0 +1,828 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Data Management - QRIS Analysis</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --primary: #0ea5e9;
+        --primary-dark: #0284c7;
+        --secondary: #06b6d4;
+        --accent: #67e8f9;
+        --dark: #1e293b;
+        --gray-100: #f8fafc;
+        --gray-200: #e2e8f0;
+        --gray-300: #cbd5e1;
+        --gray-600: #475569;
+        --gray-700: #334155;
+        --gray-800: #1e293b;
+        --gray-900: #0f172a;
+        --light: #f1f5f9;
+        --white: #ffffff;
+        --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
+        --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        --shadow-md: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+        --radius: 12px;
+        --radius-lg: 16px;
+        --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+        background: #f8fafc;
+        color: var(--gray-800);
+        line-height: 1.6;
+        min-height: 100vh;
+      }
+
+      .navbar {
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(12px);
+        border-bottom: 1px solid var(--gray-200);
+        padding: 1rem 0;
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        box-shadow: var(--shadow-sm);
+      }
+
+      .navbar-brand {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        font-weight: 700;
+        color: var(--gray-900);
+        text-decoration: none;
+        font-size: 1.35rem;
+      }
+
+      .brand-icon {
+        width: 42px;
+        height: 42px;
+        background: linear-gradient(
+          135deg,
+          var(--primary),
+          var(--primary-dark)
+        );
+        color: white;
+        border-radius: var(--radius);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 800;
+        font-size: 1.1rem;
+        box-shadow: var(--shadow);
+      }
+
+      .brand-text {
+        line-height: 1.3;
+      }
+
+      .brand-subtitle {
+        font-size: 0.8rem;
+        color: var(--gray-600);
+        font-weight: 500;
+      }
+
+      .nav-link {
+        color: var(--gray-600);
+        font-weight: 500;
+        padding: 0.5rem 1rem;
+        border-radius: var(--radius);
+        transition: var(--transition);
+        position: relative;
+      }
+
+      .nav-link:hover {
+        color: var(--primary);
+        background: rgba(14, 165, 233, 0.1);
+      }
+
+      .nav-link.active {
+        background: var(--primary);
+        color: white;
+        font-weight: 600;
+      }
+
+      .dashboard-header {
+        background: white;
+        padding: 2.5rem 0;
+        margin-bottom: 2rem;
+        border-bottom: 1px solid var(--gray-200);
+      }
+
+      .page-title {
+        font-size: 2rem;
+        font-weight: 700;
+        color: var(--gray-900);
+        margin-bottom: 0.5rem;
+      }
+
+      .page-subtitle {
+        color: var(--gray-600);
+        font-size: 1rem;
+        max-width: 900px;
+      }
+
+      .tab-container {
+        background: white;
+        border-radius: var(--radius);
+        overflow: hidden;
+        box-shadow: var(--shadow-sm);
+        margin-bottom: 2rem;
+        border: 1px solid var(--gray-200);
+      }
+
+      .nav-tabs {
+        border-bottom: none;
+        background: #f8fafc;
+        padding: 0.75rem 1rem 0;
+      }
+
+      .nav-tabs .nav-link {
+        border: none;
+        color: var(--gray-600);
+        padding: 0.75rem 1.25rem;
+        font-weight: 600;
+        border-radius: 8px 8px 0 0;
+        margin: 0 0.25rem;
+        font-size: 0.9rem;
+        transition: var(--transition);
+      }
+
+      .nav-tabs .nav-link:hover {
+        background: rgba(14, 165, 233, 0.1);
+        color: var(--primary);
+      }
+
+      .nav-tabs .nav-link.active {
+        background: var(--primary);
+        color: white;
+      }
+
+      .tab-content {
+        padding: 1.75rem;
+      }
+
+      .dataset-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 1.5rem;
+      }
+
+      .dataset-title {
+        font-size: 1.4rem;
+        font-weight: 700;
+        color: var(--gray-900);
+        margin: 0;
+      }
+
+      .dataset-subtitle {
+        color: var(--gray-600);
+        font-size: 0.875rem;
+        margin-top: 0.25rem;
+      }
+
+      .row-badge {
+        background: linear-gradient(
+          135deg,
+          var(--primary),
+          var(--primary-dark)
+        );
+        color: white;
+        padding: 0.4rem 1rem;
+        border-radius: 50px;
+        font-size: 0.8rem;
+        font-weight: 600;
+        box-shadow: var(--shadow);
+      }
+
+      .data-table {
+        background: white;
+        border-radius: var(--radius);
+        overflow: hidden;
+      }
+
+      .table {
+        font-size: 0.875rem;
+        margin: 0;
+      }
+
+      .table thead th {
+        background: #f8fafc;
+        color: var(--gray-700);
+        font-weight: 600;
+        padding: 0.875rem;
+        border: none;
+        font-size: 0.8rem;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+      }
+
+      .table tbody td {
+        padding: 0.875rem;
+        color: var(--gray-700);
+        border-bottom: 1px solid var(--gray-200);
+        vertical-align: middle;
+      }
+
+      .table tbody tr:hover {
+        background-color: rgba(14, 165, 233, 0.05);
+      }
+
+      .text {
+        white-space: normal;
+        word-wrap: break-word;
+      }
+
+      .badge {
+        font-size: 0.75rem;
+        padding: 0.35rem 0.75rem;
+        font-weight: 600;
+      }
+
+      .pagination {
+        margin-top: 1.5rem;
+      }
+
+      .page-link {
+        color: var(--primary);
+        border: 1px solid var(--gray-300);
+        padding: 0.5rem 0.875rem;
+        margin: 0 0.2rem;
+        border-radius: 8px;
+        font-weight: 500;
+        font-size: 0.875rem;
+        transition: var(--transition);
+      }
+
+      .page-link:hover {
+        background-color: rgba(14, 165, 233, 0.1);
+        color: var(--primary-dark);
+        border-color: var(--primary);
+      }
+
+      .page-item.active .page-link {
+        background: var(--primary);
+        border-color: var(--primary);
+        color: white;
+      }
+
+      .page-item.disabled .page-link {
+        opacity: 0.5;
+        cursor: not-allowed;
+        background: transparent;
+      }
+
+      .loading {
+        text-align: center;
+        padding: 2.5rem;
+        color: var(--gray-600);
+      }
+
+      .table-info {
+        text-align: center;
+        padding: 1rem;
+        color: var(--gray-600);
+        font-size: 0.875rem;
+      }
+
+      @media (max-width: 768px) {
+        .page-title {
+          font-size: 1.6rem;
+        }
+        .dataset-title {
+          font-size: 1.2rem;
+        }
+        .text {
+          max-width: 150px;
+        }
+        .dataset-header {
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 0.75rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg">
+      <div class="container">
+        <a class="navbar-brand" href="#">
+          <div class="brand-icon">QR</div>
+          <div>
+            <div>QRIS Analysis</div>
+            <div class="brand-subtitle">Hybrid Model Research</div>
+          </div>
+        </a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div
+          class="collapse navbar-collapse justify-content-end"
+          id="navbarNav"
+        >
+          <ul class="navbar-nav gap-2">
+            <li class="nav-item">
+              <a class="nav-link" href="index.html">
+                <i class="fas fa-home me-1"></i> Home
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="dashboard.html">
+                <i class="fas fa-chart-bar me-1"></i> Dashboard
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="data.html">
+                <i class="fas fa-database me-1"></i> Data
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="about.html">
+                <i class="fas fa-info-circle me-1"></i> About
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div class="dashboard-header">
+      <div class="container">
+        <h1 class="page-title">Data Management</h1>
+        <p class="page-subtitle">
+          Kelola dan eksplorasi dataset Reddit, Google Form, dan hasil integrasi
+          clustering
+        </p>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="tab-container">
+        <ul class="nav nav-tabs" id="dataTab" role="tablist">
+          <li class="nav-item" role="presentation">
+            <button
+              class="nav-link active"
+              id="reddit-tab"
+              data-bs-toggle="tab"
+              data-bs-target="#reddit"
+              type="button"
+            >
+              <i class="fab fa-reddit me-1"></i> Data Reddit
+            </button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button
+              class="nav-link"
+              id="googleform-tab"
+              data-bs-toggle="tab"
+              data-bs-target="#googleform"
+              type="button"
+            >
+              <i class="fab fa-google me-1"></i> Data Google Form
+            </button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button
+              class="nav-link"
+              id="integration-tab"
+              data-bs-toggle="tab"
+              data-bs-target="#integration"
+              type="button"
+            >
+              <i class="fas fa-layer-group me-1"></i> Data Integrasi
+            </button>
+          </li>
+        </ul>
+        <div class="tab-content">
+          <div class="tab-pane fade show active" id="reddit">
+            <div class="dataset-header">
+              <div>
+                <h3 class="dataset-title">Dataset Reddit</h3>
+                <p class="dataset-subtitle" id="reddit-subtitle">
+                  Memuat data...
+                </p>
+              </div>
+              <span class="row-badge" id="reddit-badge">0 rows</span>
+            </div>
+            <div class="data-table">
+              <div class="table-responsive">
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th style="width: 12%">Username</th>
+                      <th style="width: 30%">Komentar</th>
+                      <th style="width: 30%">Komentar Bersih</th>
+                      <th style="width: 14%">Sentiment</th>
+                      <th style="width: 14%">Prediksi NB</th>
+                    </tr>
+                  </thead>
+                  <tbody id="redditTableBody">
+                    <tr>
+                      <td colspan="5" class="loading">
+                        <i class="fas fa-spinner fa-spin me-2"></i>Memuat
+                        data...
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="table-info" id="reddit-info">Memuat...</div>
+              <nav>
+                <ul
+                  class="pagination justify-content-center"
+                  id="reddit-pagination"
+                ></ul>
+              </nav>
+            </div>
+          </div>
+
+          <div class="tab-pane fade" id="googleform">
+            <div class="dataset-header">
+              <div>
+                <h3 class="dataset-title">Data Google Form</h3>
+                <p class="dataset-subtitle" id="googleform-subtitle">
+                  Memuat data...
+                </p>
+              </div>
+              <span class="row-badge" id="googleform-badge">0 rows</span>
+            </div>
+            <div class="data-table">
+              <div class="table-responsive">
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th>Status</th>
+                      <th>Usia</th>
+                      <th>Gender</th>
+                      <th>Domisili</th>
+                      <th>Metode</th>
+                      <th>Kemudahan</th>
+                      <th>Manfaat</th>
+                    </tr>
+                  </thead>
+                  <tbody id="googleFormTableBody">
+                    <tr>
+                      <td colspan="7" class="loading">
+                        <i class="fas fa-spinner fa-spin me-2"></i>Memuat
+                        data...
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="table-info" id="googleform-info">Memuat...</div>
+              <nav>
+                <ul
+                  class="pagination justify-content-center"
+                  id="googleform-pagination"
+                ></ul>
+              </nav>
+            </div>
+          </div>
+
+          <div class="tab-pane fade" id="integration">
+            <div class="dataset-header">
+              <div>
+                <h3 class="dataset-title">Data Integrasi</h3>
+                <p class="dataset-subtitle" id="integration-subtitle">
+                  Memuat data...
+                </p>
+              </div>
+              <span class="row-badge" id="integration-badge">0 rows</span>
+            </div>
+            <div class="data-table">
+              <div class="table-responsive">
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th>Status</th>
+                      <th>Metode</th>
+                      <th>Sentimen</th>
+                      <th>Persepsi</th>
+                      <th>Skor Total</th>
+                      <th>Cluster</th>
+                    </tr>
+                  </thead>
+                  <tbody id="integrationTableBody">
+                    <tr>
+                      <td colspan="6" class="loading">
+                        <i class="fas fa-spinner fa-spin me-2"></i>Memuat
+                        data...
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="table-info" id="integration-info">Memuat...</div>
+              <nav>
+                <ul
+                  class="pagination justify-content-center"
+                  id="integration-pagination"
+                ></ul>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+      let redditData = [];
+      let googleFormData = [];
+      let integrationData = [];
+
+      const ITEMS_PER_PAGE = 10;
+      let currentPages = {
+        reddit: 1,
+        googleform: 1,
+        integration: 1,
+      };
+
+      async function loadData() {
+        try {
+          const redditResponse = await fetch(
+            "data/scrapping_qris_preprocessed.json"
+          );
+          redditData = await redditResponse.json();
+
+          const googleFormResponse = await fetch("data/googleform_data.json");
+          googleFormData = await googleFormResponse.json();
+
+          const integrationResponse = await fetch(
+            "data/hasil_cluster_integrasi.json"
+          );
+          integrationData = await integrationResponse.json();
+
+          document.getElementById(
+            "reddit-badge"
+          ).textContent = `${redditData.length} rows`;
+          document.getElementById(
+            "reddit-subtitle"
+          ).textContent = `${redditData.length} komentar hasil scraping dengan analisis sentimen`;
+
+          document.getElementById(
+            "googleform-badge"
+          ).textContent = `${googleFormData.length} rows`;
+          document.getElementById(
+            "googleform-subtitle"
+          ).textContent = `${googleFormData.length} responden survei dengan 5 variabel utama`;
+
+          document.getElementById(
+            "integration-badge"
+          ).textContent = `${integrationData.length} rows`;
+          document.getElementById(
+            "integration-subtitle"
+          ).textContent = `${integrationData.length} data hasil integrasi dengan cluster assignment`;
+
+          loadRedditData(1);
+        } catch (error) {
+          console.error("Error loading data:", error);
+          alert("Gagal memuat data. Pastikan file JSON ada di folder /data/");
+        }
+      }
+
+      function paginate(array, page, perPage) {
+        const start = (page - 1) * perPage;
+        const end = start + perPage;
+        return array.slice(start, end);
+      }
+
+      function getTotalPages(totalItems) {
+        return Math.ceil(totalItems / ITEMS_PER_PAGE);
+      }
+
+      function createPagination(
+        containerId,
+        currentPage,
+        totalPages,
+        onPageChange
+      ) {
+        const container = document.getElementById(containerId);
+        container.innerHTML = "";
+
+        const prevLi = document.createElement("li");
+        prevLi.className = `page-item ${currentPage === 1 ? "disabled" : ""}`;
+        prevLi.innerHTML = `<a class="page-link"><i class="fas fa-chevron-left me-1"></i>Prev</a>`;
+        if (currentPage > 1) {
+          prevLi.querySelector("a").onclick = () =>
+            onPageChange(currentPage - 1);
+        }
+        container.appendChild(prevLi);
+
+        const maxVisible = 5;
+        let startPage = Math.max(1, currentPage - Math.floor(maxVisible / 2));
+        let endPage = Math.min(totalPages, startPage + maxVisible - 1);
+        if (endPage - startPage < maxVisible - 1) {
+          startPage = Math.max(1, endPage - maxVisible + 1);
+        }
+
+        for (let i = startPage; i <= endPage; i++) {
+          const li = document.createElement("li");
+          li.className = `page-item ${i === currentPage ? "active" : ""}`;
+          li.innerHTML = `<a class="page-link">${i}</a>`;
+          li.querySelector("a").onclick = () => onPageChange(i);
+          container.appendChild(li);
+        }
+
+        const nextLi = document.createElement("li");
+        nextLi.className = `page-item ${
+          currentPage === totalPages ? "disabled" : ""
+        }`;
+        nextLi.innerHTML = `<a class="page-link">Next<i class="fas fa-chevron-right ms-1"></i></a>`;
+        if (currentPage < totalPages) {
+          nextLi.querySelector("a").onclick = () =>
+            onPageChange(currentPage + 1);
+        }
+        container.appendChild(nextLi);
+      }
+
+      function loadRedditData(page) {
+        currentPages.reddit = page;
+        const tbody = document.getElementById("redditTableBody");
+        const totalPages = getTotalPages(redditData.length);
+        const pageData = paginate(redditData, page, ITEMS_PER_PAGE);
+
+        tbody.innerHTML = "";
+        pageData.forEach((row) => {
+          const getSentimentColor = (sentiment) => {
+            if (!sentiment) return "bg-secondary";
+            const sent = sentiment.toLowerCase();
+            if (sent === "positif" || sent === "positive") return "bg-success";
+            if (sent === "negatif" || sent === "negative") return "bg-danger";
+            if (sent === "netral" || sent === "neutral")
+              return "bg-warning text-dark";
+            return "bg-secondary";
+          };
+
+          tbody.innerHTML += `
+            <tr>
+              <td><strong>${row.Username}</strong></td>
+              <td><div class="text">${row.Komentar}</div></td>
+              <td><div class="text">${row.Komentar_Bersih}</div></td>
+              <td><span class="badge ${getSentimentColor(row.sentiment)}">${
+            row.sentiment
+          }</span></td>
+              <td><span class="badge ${getSentimentColor(
+                row.sentiment_prediksi_nb
+              )}">${row.sentiment_prediksi_nb}</span></td>
+            </tr>
+          `;
+        });
+
+        const start = (page - 1) * ITEMS_PER_PAGE + 1;
+        const end = Math.min(page * ITEMS_PER_PAGE, redditData.length);
+        document.getElementById(
+          "reddit-info"
+        ).textContent = `Menampilkan ${start} - ${end} dari ${redditData.length} data`;
+        createPagination("reddit-pagination", page, totalPages, loadRedditData);
+      }
+
+      function loadGoogleFormData(page) {
+        currentPages.googleform = page;
+        const tbody = document.getElementById("googleFormTableBody");
+        const totalPages = getTotalPages(googleFormData.length);
+        const pageData = paginate(googleFormData, page, ITEMS_PER_PAGE);
+
+        tbody.innerHTML = "";
+        pageData.forEach((row) => {
+          const status = row["Status Anda :"] || row["Status Anda"];
+          const usia = row["Usia :"] || row["Usia"];
+          const gender = row["Jenis kelamin :"] || row["Jenis kelamin"];
+          const domisili = row["Domisili :"] || row["Domisili"];
+          const metode = row["Metode pembayaran yang paling sering digunakan:"];
+          const kemudahan = row["Kemudahan Penggunaan (Perceived Ease of Use)"];
+          const manfaat = row["Manfaat dan Kenyamanan (Perceived Usefulness)"];
+
+          tbody.innerHTML += `
+            <tr>
+              <td>${status}</td>
+              <td>${usia}</td>
+              <td>${gender}</td>
+              <td>${domisili}</td>
+              <td><span class="badge bg-primary">${metode}</span></td>
+              <td>${kemudahan}</td>
+              <td>${manfaat}</td>
+            </tr>
+          `;
+        });
+
+        const start = (page - 1) * ITEMS_PER_PAGE + 1;
+        const end = Math.min(page * ITEMS_PER_PAGE, googleFormData.length);
+        document.getElementById(
+          "googleform-info"
+        ).textContent = `Menampilkan ${start} - ${end} dari ${googleFormData.length} data`;
+        createPagination(
+          "googleform-pagination",
+          page,
+          totalPages,
+          loadGoogleFormData
+        );
+      }
+
+      function loadIntegrationData(page) {
+        currentPages.integration = page;
+        const tbody = document.getElementById("integrationTableBody");
+        const totalPages = getTotalPages(integrationData.length);
+        const pageData = paginate(integrationData, page, ITEMS_PER_PAGE);
+
+        tbody.innerHTML = "";
+        pageData.forEach((row) => {
+          const clusterColors = {
+            0: "bg-info",
+            1: "bg-warning text-dark",
+            2: "bg-success",
+          };
+
+          const status = row["Status Anda :"];
+          const metode = row["Metode pembayaran yang paling sering digunakan:"];
+          const sentimen = row["Skor_Sentimen_Reddit"].toFixed(2);
+          const persepsi = row["Skor_Persepsi_Gabungan"].toFixed(2);
+          const total = row["Skor_Total_Integrasi"].toFixed(2);
+          const cluster = row["Cluster"];
+
+          tbody.innerHTML += `
+            <tr>
+              <td>${status}</td>
+              <td><span class="badge bg-secondary">${metode}</span></td>
+              <td>${sentimen}</td>
+              <td>${persepsi}</td>
+              <td><strong>${total}</strong></td>
+              <td><span class="badge ${clusterColors[cluster]}">Cluster ${cluster}</span></td>
+            </tr>
+          `;
+        });
+
+        const start = (page - 1) * ITEMS_PER_PAGE + 1;
+        const end = Math.min(page * ITEMS_PER_PAGE, integrationData.length);
+        document.getElementById(
+          "integration-info"
+        ).textContent = `Menampilkan ${start} - ${end} dari ${integrationData.length} data`;
+        createPagination(
+          "integration-pagination",
+          page,
+          totalPages,
+          loadIntegrationData
+        );
+      }
+
+      document.addEventListener("DOMContentLoaded", function () {
+        loadData();
+
+        document
+          .getElementById("googleform-tab")
+          .addEventListener("click", function () {
+            if (
+              googleFormData.length > 0 &&
+              document
+                .getElementById("googleFormTableBody")
+                .querySelector(".loading")
+            ) {
+              loadGoogleFormData(1);
+            }
+          });
+
+        document
+          .getElementById("integration-tab")
+          .addEventListener("click", function () {
+            if (
+              integrationData.length > 0 &&
+              document
+                .getElementById("integrationTableBody")
+                .querySelector(".loading")
+            ) {
+              loadIntegrationData(1);
+            }
+          });
+      });
+    </script>
+  </body>
+</html>

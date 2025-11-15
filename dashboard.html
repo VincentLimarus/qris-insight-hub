@@ -1,0 +1,943 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard - QRIS Analysis</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --primary: #0ea5e9;
+        --primary-dark: #0284c7;
+        --secondary: #06b6d4;
+        --accent: #67e8f9;
+        --success: #10b981;
+        --warning: #f59e0b;
+        --danger: #ef4444;
+        --dark: #1e293b;
+        --gray-100: #f8fafc;
+        --gray-200: #e2e8f0;
+        --gray-300: #cbd5e1;
+        --gray-600: #475569;
+        --gray-700: #334155;
+        --gray-800: #1e293b;
+        --gray-900: #0f172a;
+        --light: #f1f5f9;
+        --white: #ffffff;
+        --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
+        --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        --shadow-md: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+        --radius: 12px;
+        --radius-lg: 16px;
+        --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+        background: #f8fafc;
+        color: var(--gray-800);
+        line-height: 1.6;
+        min-height: 100vh;
+      }
+
+      .navbar {
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(12px);
+        border-bottom: 1px solid var(--gray-200);
+        padding: 1rem 0;
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        box-shadow: var(--shadow-sm);
+      }
+
+      .navbar-brand {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        font-weight: 700;
+        color: var(--gray-900);
+        text-decoration: none;
+        font-size: 1.35rem;
+      }
+
+      .brand-icon {
+        width: 42px;
+        height: 42px;
+        background: linear-gradient(
+          135deg,
+          var(--primary),
+          var(--primary-dark)
+        );
+        color: white;
+        border-radius: var(--radius);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 800;
+        font-size: 1.1rem;
+        box-shadow: var(--shadow);
+      }
+
+      .brand-text {
+        line-height: 1.3;
+      }
+
+      .brand-subtitle {
+        font-size: 0.8rem;
+        color: var(--gray-600);
+        font-weight: 500;
+      }
+
+      .nav-link {
+        color: var(--gray-600);
+        font-weight: 500;
+        padding: 0.5rem 1rem;
+        border-radius: var(--radius);
+        transition: var(--transition);
+        position: relative;
+      }
+
+      .nav-link:hover {
+        color: var(--primary);
+        background: rgba(14, 165, 233, 0.1);
+      }
+
+      .nav-link.active {
+        background: var(--primary);
+        color: white;
+        font-weight: 600;
+      }
+
+      .dashboard-header {
+        background: white;
+        padding: 2.5rem 0;
+        margin-bottom: 1rem;
+        border-bottom: 1px solid var(--gray-200);
+      }
+
+      .page-title {
+        font-size: 2rem;
+        font-weight: 700;
+        color: var(--gray-900);
+        margin-bottom: 0.5rem;
+      }
+
+      .page-subtitle {
+        color: var(--gray-600);
+        font-size: 1rem;
+        max-width: 900px;
+      }
+
+      .metric-card {
+        background: white;
+        border-radius: var(--radius);
+        padding: 1.5rem;
+        box-shadow: var(--shadow-sm);
+        transition: var(--transition);
+        height: 100%;
+        border: 1px solid var(--gray-200);
+      }
+
+      .metric-card:hover {
+        transform: translateY(-4px);
+        box-shadow: var(--shadow-md);
+      }
+
+      .metric-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        margin-bottom: 0.75rem;
+      }
+
+      .metric-label {
+        color: var(--gray-600);
+        font-size: 0.875rem;
+        font-weight: 500;
+      }
+
+      .metric-icon {
+        width: 40px;
+        height: 40px;
+        background: var(--primary);
+        color: white;
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.1rem;
+      }
+
+      .metric-value {
+        font-size: 2rem;
+        font-weight: 700;
+        color: var(--gray-900);
+        line-height: 1;
+        margin-bottom: 0.25rem;
+      }
+
+      .metric-desc {
+        color: var(--gray-500);
+        font-size: 0.875rem;
+      }
+
+      .highlight-card {
+        background: white;
+        border-radius: var(--radius);
+        padding: 1.5rem;
+        box-shadow: var(--shadow-sm);
+        border: 1px solid var(--gray-200);
+        height: 100%;
+      }
+
+      .highlight-header {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin-bottom: 1rem;
+      }
+
+      .highlight-icon {
+        width: 40px;
+        height: 40px;
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.1rem;
+      }
+
+      .highlight-title {
+        font-size: 0.875rem;
+        font-weight: 600;
+        color: var(--gray-700);
+        margin: 0;
+      }
+
+      .highlight-subtitle {
+        font-size: 0.75rem;
+        color: var(--gray-500);
+        margin: 0;
+      }
+
+      .highlight-value {
+        font-size: 2rem;
+        font-weight: 700;
+        text-align: center;
+        margin: 1rem 0;
+      }
+
+      .highlight-desc {
+        text-align: center;
+        color: var(--gray-600);
+        font-size: 0.875rem;
+      }
+
+      .chart-card {
+        background: white;
+        border-radius: var(--radius);
+        padding: 1.75rem;
+        box-shadow: var(--shadow-sm);
+        margin-bottom: 1.5rem;
+        border: 1px solid var(--gray-200);
+      }
+
+      .card-title-section {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin-bottom: 1.5rem;
+      }
+
+      .card-icon {
+        width: 40px;
+        height: 40px;
+        background: var(--primary);
+        color: white;
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.1rem;
+      }
+
+      .cluster-badge {
+        display: inline-block;
+        padding: 0.375rem 0.875rem;
+        border-radius: 50px;
+        font-size: 0.75rem;
+        font-weight: 600;
+        color: white;
+      }
+
+      .cluster-0 {
+        background: #0891b2;
+      }
+      .cluster-1 {
+        background: #06b6d4;
+      }
+      .cluster-2 {
+        background: #67e8f9;
+        color: #0e7490;
+      }
+
+      .profile-stat {
+        background: #f8fafc;
+        padding: 1rem;
+        border-radius: 8px;
+        text-align: center;
+      }
+
+      .profile-stat i {
+        color: var(--primary);
+        margin-bottom: 0.5rem;
+        font-size: 1.1rem;
+      }
+
+      .profile-stat-label {
+        font-size: 0.75rem;
+        color: var(--gray-600);
+        margin-bottom: 0.25rem;
+      }
+
+      .profile-stat-value {
+        font-size: 1.25rem;
+        font-weight: 700;
+        color: var(--gray-900);
+      }
+
+      .table {
+        font-size: 0.875rem;
+        margin: 0;
+      }
+
+      .table th {
+        background: #f8fafc;
+        color: var(--gray-700);
+        font-weight: 600;
+        padding: 0.875rem;
+        border: none;
+        font-size: 0.8rem;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+      }
+
+      .table td {
+        padding: 0.875rem;
+        border-bottom: 1px solid var(--gray-200);
+        vertical-align: middle;
+      }
+
+      .table tbody tr:hover {
+        background: rgba(14, 165, 233, 0.05);
+      }
+
+      .scatter-point {
+        transition: all 0.2s ease;
+        cursor: pointer;
+      }
+
+      .scatter-point:hover {
+        r: 10;
+        stroke: white;
+        stroke-width: 2;
+      }
+
+      .tooltip {
+        position: absolute;
+        background: var(--gray-900);
+        color: white;
+        padding: 0.5rem 0.75rem;
+        border-radius: 8px;
+        font-size: 0.75rem;
+        pointer-events: none;
+        opacity: 0;
+        transition: opacity 0.2s;
+        box-shadow: var(--shadow-md);
+        z-index: 1000;
+      }
+
+      .loading {
+        text-align: center;
+        padding: 2rem;
+        color: var(--gray-600);
+      }
+
+      .sentiment-item {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding: 0.75rem 0;
+        border-bottom: 1px solid var(--gray-200);
+      }
+
+      .sentiment-item:last-child {
+        border-bottom: none;
+      }
+
+      .sentiment-icon {
+        width: 36px;
+        height: 36px;
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1rem;
+        color: white;
+        flex-shrink: 0;
+      }
+
+      .sentiment-positive {
+        background: #10b981;
+      }
+      .sentiment-negative {
+        background: #ef4444;
+      }
+      .sentiment-neutral {
+        background: #94a3b8;
+      }
+
+      .sentiment-label {
+        flex: 1;
+        font-size: 0.875rem;
+        font-weight: 500;
+      }
+
+      .sentiment-value {
+        font-weight: 700;
+        font-size: 1.1rem;
+        min-width: 40px;
+        text-align: right;
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg">
+      <div class="container">
+        <a class="navbar-brand" href="#">
+          <div class="brand-icon">QR</div>
+          <div>
+            <div>QRIS Analysis</div>
+            <div class="brand-subtitle">Hybrid Model Research</div>
+          </div>
+        </a>
+        <div class="collapse navbar-collapse justify-content-end">
+          <ul class="navbar-nav gap-2">
+            <li class="nav-item">
+              <a class="nav-link" href="index.html"
+                ><i class="fas fa-home me-1"></i> Home</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="dashboard.html"
+                ><i class="fas fa-chart-bar me-1"></i> Dashboard</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="data.html"
+                ><i class="fas fa-database me-1"></i> Data</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="about.html"
+                ><i class="fas fa-info-circle me-1"></i> About</a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div class="dashboard-header">
+      <div class="container">
+        <h1 class="page-title">Dashboard Analisis QRIS</h1>
+        <p class="page-subtitle">
+          Visualisasi hasil integrasi analisis sentimen Reddit (Naïve Bayes)
+          dengan data survei Google Form, menggunakan K-Means Clustering untuk
+          mengidentifikasi pola persepsi pengguna terhadap QRIS.
+        </p>
+      </div>
+    </div>
+
+    <div class="container">
+      <!-- Metrics -->
+      <div class="row g-3 mb-4" id="metricsContainer">
+        <div class="loading">
+          <i class="fas fa-spinner fa-spin fa-2x"></i>
+          <p>Loading data...</p>
+        </div>
+      </div>
+
+      <!-- Cluster Highlights -->
+      <div class="row g-3 mb-4">
+        <div class="col-lg-12">
+          <div class="row g-3" id="clusterHighlights">
+            <div class="loading">
+              <i class="fas fa-spinner fa-spin fa-2x"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Pie & Profiles -->
+      <div class="row g-3 mb-4">
+        <div class="col-lg-6">
+          <div class="chart-card" style="height: 100%">
+            <div class="card-title-section">
+              <div class="card-icon"><i class="fas fa-chart-pie"></i></div>
+              <div>
+                <h3 class="card-title">Distribusi Cluster</h3>
+                <p class="card-subtitle mb-0">
+                  Proporsi responden di setiap kelompok hasil K-Means
+                  Clustering.
+                </p>
+              </div>
+            </div>
+            <div id="pieChartContent" class="loading">
+              <i class="fas fa-spinner fa-spin fa-2x"></i>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="chart-card" style="height: 100%">
+            <div class="card-title-section">
+              <div class="card-icon"><i class="fas fa-users"></i></div>
+              <div>
+                <h3 class="card-title">Profil Skor per Cluster</h3>
+                <p class="card-subtitle mb-0">
+                  Rata-rata sentimen, persepsi, dan skor total tiap kelompok.
+                </p>
+              </div>
+            </div>
+            <div id="clusterProfiles" class="loading">
+              <i class="fas fa-spinner fa-spin fa-2x"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sentimen Reddit + Scatter Plot (Berdampingan) -->
+      <div class="row g-3 mb-4">
+        <!-- Sentimen Reddit (Kiri) -->
+        <div class="col-lg-4">
+          <div class="chart-card h-100 d-flex flex-column">
+            <div class="card-title-section">
+              <div class="card-icon" style="background: #6366f1">
+                <i class="fab fa-reddit"></i>
+              </div>
+              <div>
+                <h3 class="card-title">Sentimen Reddit</h3>
+                <p class="card-subtitle mb-0">
+                  Distribusi komentar berdasarkan prediksi Naïve Bayes
+                </p>
+              </div>
+            </div>
+            <div
+              id="redditSentiment"
+              class="flex-grow-1 d-flex align-items-center justify-content-center"
+            >
+              <div class="loading">
+                <i class="fas fa-spinner fa-spin fa-2x"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Scatter Plot (Kanan) -->
+        <div class="col-lg-8">
+          <div class="chart-card h-100">
+            <div class="card-title-section">
+              <div class="card-icon"><i class="fas fa-brain"></i></div>
+              <div>
+                <h3 class="card-title">Pola Clustering: Integrasi Data</h3>
+                <p class="card-subtitle mb-0">
+                  Hubungan Skor Total vs Sentimen Reddit. Warna = cluster
+                  K-Means.
+                </p>
+              </div>
+            </div>
+            <div
+              class="position-relative h-100"
+              id="scatterPlot"
+              style="min-height: 380px"
+            >
+              <div
+                class="loading h-100 d-flex align-items-center justify-content-center"
+              >
+                <i class="fas fa-spinner fa-spin fa-2x"></i>
+              </div>
+            </div>
+            <div class="tooltip" id="tooltip"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Stats Table -->
+      <div class="chart-card mb-5">
+        <div class="card-title-section">
+          <div class="card-icon"><i class="fas fa-table"></i></div>
+          <div>
+            <h3 class="card-title">Ringkasan Statistik Cluster</h3>
+            <p class="card-subtitle mb-0">
+              Detail jumlah anggota dan rata-rata skor tiap cluster.
+            </p>
+          </div>
+        </div>
+        <div class="table-responsive" id="statsTable">
+          <div class="loading">
+            <i class="fas fa-spinner fa-spin fa-2x"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+      async function loadData() {
+        try {
+          const [clusterRes, redditRes] = await Promise.all([
+            fetch("data/hasil_cluster_integrasi.json"),
+            fetch("data/scrapping_qris_preprocessed.json"),
+          ]);
+          const clusterData = await clusterRes.json();
+          const redditData = await redditRes.json();
+          return { clusterData, redditData };
+        } catch (err) {
+          console.error("Error loading data:", err);
+          alert("Gagal memuat data. Pastikan file JSON ada di folder 'data/'");
+          return { clusterData: [], redditData: [] };
+        }
+      }
+
+      function calculateClusterStats(data) {
+        const stats = {};
+        data.forEach((d) => {
+          const c = d.Cluster;
+          if (!stats[c])
+            stats[c] = { count: 0, sentimen: 0, persepsi: 0, total: 0 };
+          stats[c].count++;
+          stats[c].sentimen += d.Skor_Sentimen_Reddit || 0;
+          stats[c].persepsi += d.Skor_Persepsi_Gabungan || 0;
+          stats[c].total += d.Skor_Total_Integrasi || 0;
+        });
+        Object.keys(stats).forEach((k) => {
+          const s = stats[k];
+          s.avgSentimen = s.sentimen / s.count;
+          s.avgPersepsi = s.persepsi / s.count;
+          s.avgTotal = s.total / s.count;
+        });
+        return stats;
+      }
+
+      function calculateRedditSentiment(redditData) {
+        const count = { positif: 0, negatif: 0, netral: 0 };
+        redditData.forEach((d) => {
+          const s = (d.sentiment || "").toLowerCase();
+          if (s === "positif") count.positif++;
+          else if (s === "negatif") count.negatif++;
+          else count.netral++;
+        });
+        count.total = redditData.length;
+        return count;
+      }
+
+      function renderMetrics(data, stats) {
+        const total = data.length;
+        const clusters = Object.keys(stats).length;
+        const avgTotal = (
+          data.reduce((a, d) => a + (d.Skor_Total_Integrasi || 0), 0) / total
+        ).toFixed(2);
+
+        document.getElementById("metricsContainer").innerHTML = `
+          <div class="col-md-4"><div class="metric-card">
+            <div class="metric-header"><div class="metric-label">Total Data Integrasi</div><div class="metric-icon"><i class="fas fa-database"></i></div></div>
+            <div class="metric-value">${total}</div><div class="metric-desc">Responden yang dianalisis</div>
+          </div></div>
+          <div class="col-md-4"><div class="metric-card">
+            <div class="metric-header"><div class="metric-label">Jumlah Cluster</div><div class="metric-icon"><i class="fas fa-project-diagram"></i></div></div>
+            <div class="metric-value">${clusters}</div><div class="metric-desc">Kelompok berdasarkan K-Means</div>
+          </div></div>
+          <div class="col-md-4"><div class="metric-card">
+            <div class="metric-header"><div class="metric-label">Rata-rata Skor Total</div><div class="metric-icon"><i class="fas fa-chart-line"></i></div></div>
+            <div class="metric-value">${avgTotal}</div><div class="metric-desc">Skor persepsi gabungan</div>
+          </div></div>
+        `;
+      }
+
+      function renderClusterHighlights(stats) {
+        const sorted = Object.entries(stats).sort(
+          (a, b) => b[1].count - a[1].count
+        );
+        const dominant = sorted[0];
+        const highSent = Object.entries(stats).sort(
+          (a, b) => b[1].avgSentimen - a[1].avgSentimen
+        )[0];
+        const highPer = Object.entries(stats).sort(
+          (a, b) => b[1].avgPersepsi - a[1].avgPersepsi
+        )[0];
+        const total = sorted.reduce((a, c) => a + c[1].count, 0);
+
+        document.getElementById("clusterHighlights").innerHTML = `
+          <div class="col-md-4"><div class="highlight-card">
+            <div class="highlight-header"><div class="highlight-icon" style="background:var(--primary);color:white"><i class="fas fa-trophy"></i></div>
+              <div><h3 class="highlight-title">Cluster Dominan</h3><p class="highlight-subtitle">Cluster ${
+                dominant[0]
+              }</p></div>
+            </div>
+            <div class="highlight-value" style="color:var(--primary)">${
+              dominant[1].count
+            }</div>
+            <div class="highlight-desc">responden (${(
+              (dominant[1].count / total) *
+              100
+            ).toFixed(1)}%)</div>
+          </div></div>
+          <div class="col-md-4"><div class="highlight-card">
+            <div class="highlight-header"><div class="highlight-icon sentiment-positive"><i class="fas fa-smile"></i></div>
+              <div><h3 class="highlight-title">Sentimen Tertinggi</h3><p class="highlight-subtitle">Cluster ${
+                highSent[0]
+              }</p></div>
+            </div>
+            <div class="highlight-value" style="color:#10b981">${highSent[1].avgSentimen.toFixed(
+              2
+            )}</div>
+            <div class="highlight-desc">Skor Sentimen Reddit</div>
+          </div></div>
+          <div class="col-md-4"><div class="highlight-card">
+            <div class="highlight-header"><div class="highlight-icon" style="background:#ddd6fe;color:#7c3aed"><i class="fas fa-star"></i></div>
+              <div><h3 class="highlight-title">Persepsi Tertinggi</h3><p class="highlight-subtitle">Cluster ${
+                highPer[0]
+              }</p></div>
+            </div>
+            <div class="highlight-value" style="color:#7c3aed">${highPer[1].avgPersepsi.toFixed(
+              2
+            )}</div>
+            <div class="highlight-desc">Skor Persepsi Survei</div>
+          </div></div>
+        `;
+      }
+
+      function renderRedditSentiment(sentiment) {
+        document.getElementById("redditSentiment").innerHTML = `
+          <div class="w-100">
+            <div class="sentiment-item">
+              <div class="sentiment-icon sentiment-positive"><i class="fas fa-thumbs-up"></i></div>
+              <div class="sentiment-label">Positif</div>
+              <div class="sentiment-value">${sentiment.positif}</div>
+            </div>
+            <div class="sentiment-item">
+              <div class="sentiment-icon sentiment-negative"><i class="fas fa-thumbs-down"></i></div>
+              <div class="sentiment-label">Negatif</div>
+              <div class="sentiment-value">${sentiment.negatif}</div>
+            </div>
+            <div class="sentiment-item">
+              <div class="sentiment-icon sentiment-neutral"><i class="fas fa-meh"></i></div>
+              <div class="sentiment-label">Netral</div>
+              <div class="sentiment-value">${sentiment.netral}</div>
+            </div>
+            <div class="text-center mt-3 pt-3 border-top">
+              <small class="text-muted">Total Komentar: <strong>${sentiment.total}</strong></small>
+            </div>
+          </div>
+        `;
+      }
+
+      function renderPieChart(stats) {
+        const total = Object.values(stats).reduce((a, c) => a + c.count, 0);
+        const colors = ["#0891b2", "#06b6d4", "#67e8f9"];
+        let start = -90;
+        let paths = "",
+          labels = "",
+          legend = "";
+
+        Object.keys(stats)
+          .sort((a, b) => a - b)
+          .forEach((c, i) => {
+            const pct = stats[c].count / total;
+            const angle = pct * 360;
+            const end = start + angle;
+            const x1 = 160 + 120 * Math.cos((start * Math.PI) / 180);
+            const y1 = 160 + 120 * Math.sin((start * Math.PI) / 180);
+            const x2 = 160 + 120 * Math.cos((end * Math.PI) / 180);
+            const y2 = 160 + 120 * Math.sin((end * Math.PI) / 180);
+            const large = angle > 180 ? 1 : 0;
+            paths += `<path d="M160,160 L${x1},${y1} A120,120 0 ${large},1 ${x2},${y2} Z" fill="${colors[i]}"/>`;
+
+            const mid = start + angle / 2;
+            const lx = 160 + 80 * Math.cos((mid * Math.PI) / 180);
+            const ly = 160 + 80 * Math.sin((mid * Math.PI) / 180);
+            const txtColor = i === 2 ? "#0e7490" : "white";
+            labels += `<text x="${lx}" y="${ly}" fill="${txtColor}" text-anchor="middle" font-weight="600" font-size="16">${(
+              pct * 100
+            ).toFixed(1)}%</text>`;
+
+            legend += `<div class="col text-center"><span class="cluster-badge cluster-${c}">Cluster ${c}</span><div class="fw-bold mt-1">${stats[c].count}</div></div>`;
+
+            start = end;
+          });
+
+        document.getElementById("pieChartContent").innerHTML = `
+          <div class="text-center"><svg width="320" height="320" viewBox="0 0 320 320">${paths}${labels}</svg></div>
+          <div class="row mt-3 g-2">${legend}</div>
+        `;
+      }
+
+      function renderClusterProfiles(stats) {
+        let html = "";
+        Object.keys(stats)
+          .sort((a, b) => a - b)
+          .forEach((c) => {
+            const s = stats[c];
+            html += `
+            <div class="mb-3">
+              <div class="d-flex align-items-center mb-2">
+                <span class="cluster-badge cluster-${c} me-2">Cluster ${c}</span>
+                <span class="text-muted" style="font-size:0.875rem">${
+                  s.count
+                } responden</span>
+              </div>
+              <div class="row g-2">
+                <div class="col-4"><div class="profile-stat"><i class="fas fa-comment-dots"></i><div class="profile-stat-label">Sentimen</div><div class="profile-stat-value">${s.avgSentimen.toFixed(
+                  2
+                )}</div></div></div>
+                <div class="col-4"><div class="profile-stat"><i class="fas fa-poll"></i><div class="profile-stat-label">Persepsi</div><div class="profile-stat-value">${s.avgPersepsi.toFixed(
+                  2
+                )}</div></div></div>
+                <div class="col-4"><div class="profile-stat"><i class="fas fa-chart-bar"></i><div class="profile-stat-label">Total</div><div class="profile-stat-value">${s.avgTotal.toFixed(
+                  2
+                )}</div></div></div>
+              </div>
+            </div>`;
+          });
+        document.getElementById("clusterProfiles").innerHTML = html;
+      }
+
+      function renderScatterPlot(data) {
+        const colors = ["#0891b2", "#06b6d4", "#67e8f9"];
+        const xScale = (v) => 80 + v * 520;
+        const yScale = (v) => 320 - v * 270;
+        const points = data
+          .map(
+            (d) => `
+          <circle class="scatter-point" cx="${xScale(
+            d.Skor_Total_Integrasi
+          )}" cy="${yScale(d.Skor_Sentimen_Reddit)}" r="6"
+            fill="${colors[d.Cluster]}" data-cluster="${d.Cluster}"
+            data-total="${d.Skor_Total_Integrasi.toFixed(
+              3
+            )}" data-sentiment="${d.Skor_Sentimen_Reddit.toFixed(3)}"/>
+        `
+          )
+          .join("");
+
+        const legend = [...new Set(data.map((d) => d.Cluster))]
+          .sort((a, b) => a - b)
+          .map(
+            (c, i) => `
+          <circle cx="${100 + i * 90}" cy="35" r="6" fill="${colors[c]}"/>
+          <text x="${
+            115 + i * 90
+          }" y="40" fill="#475569" font-size="12">Cluster ${c}</text>
+        `
+          )
+          .join("");
+
+        document.getElementById(
+          "scatterPlot"
+        ).innerHTML = `<svg width="100%" height="380" viewBox="0 0 680 380">
+          <line x1="80" y1="50" x2="80" y2="320" stroke="#cbd5e1" stroke-width="2"/>
+          <line x1="80" y1="320" x2="600" y2="320" stroke="#cbd5e1" stroke-width="2"/>
+          <text x="340" y="355" text-anchor="middle" fill="#64748b" font-size="13">Skor Total Integrasi</text>
+          <text x="25" y="185" text-anchor="middle" fill="#64748b" font-size="13" transform="rotate(-90 25 185)">Skor Sentimen Reddit</text>
+          ${[0.2, 0.4, 0.6, 0.8]
+            .map(
+              (v) => `
+            <line x1="80" y1="${yScale(v)}" x2="600" y2="${yScale(
+                v
+              )}" stroke="#e2e8f0" stroke-dasharray="4,4"/>
+            <line x1="${xScale(v)}" y1="50" x2="${xScale(
+                v
+              )}" y2="320" stroke="#e2e8f0" stroke-dasharray="4,4"/>
+          `
+            )
+            .join("")}
+          ${points}${legend}
+        </svg>`;
+
+        const tooltip = document.getElementById("tooltip");
+        document.querySelectorAll(".scatter-point").forEach((p) => {
+          p.addEventListener("mouseenter", (e) => {
+            tooltip.innerHTML = `<strong>Cluster ${p.dataset.cluster}</strong><br>Skor Total: ${p.dataset.total}<br>Sentimen: ${p.dataset.sentiment}`;
+            tooltip.style.opacity = 1;
+            tooltip.style.left = e.pageX + 10 + "px";
+            tooltip.style.top = e.pageY - 10 + "px";
+          });
+          p.addEventListener("mousemove", (e) => {
+            tooltip.style.left = e.pageX + 10 + "px";
+            tooltip.style.top = e.pageY - 10 + "px";
+          });
+          p.addEventListener("mouseleave", () => (tooltip.style.opacity = 0));
+        });
+      }
+
+      function renderStatsTable(stats) {
+        const rows = Object.keys(stats)
+          .sort((a, b) => a - b)
+          .map((c) => {
+            const s = stats[c];
+            return `<tr>
+            <td><span class="cluster-badge cluster-${c}">Cluster ${c}</span></td>
+            <td><strong>${s.count}</strong></td>
+            <td>${s.avgSentimen.toFixed(3)}</td>
+            <td>${s.avgPersepsi.toFixed(3)}</td>
+            <td><strong>${s.avgTotal.toFixed(3)}</strong></td>
+          </tr>`;
+          })
+          .join("");
+        document.getElementById("statsTable").innerHTML = `
+          <table class="table table-hover">
+            <thead><tr><th>Cluster</th><th>Jumlah Anggota</th><th>Avg Sentimen Reddit</th><th>Avg Persepsi Survei</th><th>Avg Skor Total</th></tr></thead>
+            <tbody>${rows}</tbody>
+          </table>
+        `;
+      }
+
+      async function init() {
+        const { clusterData, redditData } = await loadData();
+        if (!clusterData.length) return;
+
+        const clusterStats = calculateClusterStats(clusterData);
+        const redditSentiment = calculateRedditSentiment(redditData);
+
+        renderMetrics(clusterData, clusterStats);
+        renderClusterHighlights(clusterStats);
+        renderRedditSentiment(redditSentiment);
+        renderPieChart(clusterStats);
+        renderClusterProfiles(clusterStats);
+        renderScatterPlot(clusterData);
+        renderStatsTable(clusterStats);
+      }
+
+      init();
+    </script>
+  </body>
+</html>
