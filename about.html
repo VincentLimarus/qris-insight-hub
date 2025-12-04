@@ -102,19 +102,34 @@
         font-weight: 500;
       }
       .nav-link {
-        color: var(--gray-600);
-        font-weight: 500;
-        padding: 0.5rem 1rem;
-        border-radius: var(--radius);
-        transition: var(--transition);
         position: relative;
       }
+
+      .nav-link::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 0;
+        height: 2px;
+        background: linear-gradient(90deg, #ff8c00, #ff6347);
+        transition: width 0.4s ease;
+      }
+
+      .nav-link:hover::after {
+        width: 70%;
+      }
+
+      .nav-link.active::after {
+        width: 70%;
+      }
+
       .nav-link:hover {
         color: var(--primary);
-        background: rgba(14, 165, 233, 0.1);
       }
+
       .nav-link.active {
-        background: var(--primary);
         color: white;
         font-weight: 600;
       }
@@ -341,7 +356,7 @@
     </style>
   </head>
   <body>
-    <nav class="navbar navbar-expand-lg sticky-top">
+    <nav class="navbar navbar-expand-lg">
       <div class="container">
         <a class="navbar-brand" href="#">
           <div class="brand-icon">QR</div>
@@ -407,7 +422,7 @@
         <div class="section-content">
           <div class="profile-main">
             <img
-              src="assets/rafael_christoper.png"
+              src="assets/peler.jpeg"
               alt="Rafael Christoper Suhandi"
               class="profile-avatar-img"
               style="
@@ -493,7 +508,7 @@
               </div>
               <div class="supervisor-body">
                 <img
-                  src="assets/Agus_Budi_Dharmawan.png"
+                  src="assets/Agus_Budiyantara.jpeg"
                   alt="Agus_Budi_Dharmawan"
                   class="profile-avatar-img"
                   style="
@@ -506,7 +521,7 @@
                   "
                 />
                 <h3 class="supervisor-name mt-2">
-                  Agus Budi Dharmawan, S.Kom., M.Kom.
+                  Agus Budiyantara, Ir., M.Kom.
                 </h3>
                 <p class="supervisor-title">Magister Ilmu Komputer</p>
                 <div class="supervisor-dept">

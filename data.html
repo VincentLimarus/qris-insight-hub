@@ -105,21 +105,34 @@
       }
 
       .nav-link {
-        color: var(--gray-600);
-        font-weight: 500;
-        padding: 0.5rem 1rem;
-        border-radius: var(--radius);
-        transition: var(--transition);
         position: relative;
+      }
+
+      .nav-link::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 0;
+        height: 2px;
+        background: linear-gradient(90deg, #ff8c00, #ff6347);
+        transition: width 0.4s ease;
+      }
+
+      .nav-link:hover::after {
+        width: 70%;
+      }
+
+      .nav-link.active::after {
+        width: 70%;
       }
 
       .nav-link:hover {
         color: var(--primary);
-        background: rgba(14, 165, 233, 0.1);
       }
 
       .nav-link.active {
-        background: var(--primary);
         color: white;
         font-weight: 600;
       }
