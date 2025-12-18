@@ -1,0 +1,1012 @@
+[
+  {
+    "Responden_ID": 1,
+    "Metode_Pembayaran": "Pembeli / Konsumen",
+    "Kemudahan": 4.0,
+    "Kepuasan": 4.0,
+    "Kecepatan": 4.0,
+    "Keamanan": 4.0,
+    "Frekuensi": 4.0,
+    "Cluster": 0
+  },
+  {
+    "Responden_ID": 2,
+    "Metode_Pembayaran": "Pelaku UMKM (penjual)",
+    "Kemudahan": 4.0,
+    "Kepuasan": 5.0,
+    "Kecepatan": 4.0,
+    "Keamanan": 5.0,
+    "Frekuensi": 4.0,
+    "Cluster": 0
+  },
+  {
+    "Responden_ID": 3,
+    "Metode_Pembayaran": "Pembeli / Konsumen",
+    "Kemudahan": 5.0,
+    "Kepuasan": 5.0,
+    "Kecepatan": 5.0,
+    "Keamanan": 4.0,
+    "Frekuensi": 4.0,
+    "Cluster": 0
+  },
+  {
+    "Responden_ID": 4,
+    "Metode_Pembayaran": "Pelaku UMKM (penjual)",
+    "Kemudahan": 4.0,
+    "Kepuasan": 5.0,
+    "Kecepatan": 5.0,
+    "Keamanan": 5.0,
+    "Frekuensi": 4.0,
+    "Cluster": 0
+  },
+  {
+    "Responden_ID": 5,
+    "Metode_Pembayaran": "Pelaku UMKM (penjual)",
+    "Kemudahan": 4.0,
+    "Kepuasan": 5.0,
+    "Kecepatan": 5.0,
+    "Keamanan": 5.0,
+    "Frekuensi": 4.0,
+    "Cluster": 0
+  },
+  {
+    "Responden_ID": 6,
+    "Metode_Pembayaran": "Pelaku UMKM (penjual)",
+    "Kemudahan": 4.0,
+    "Kepuasan": 5.0,
+    "Kecepatan": 4.0,
+    "Keamanan": 5.0,
+    "Frekuensi": 5.0,
+    "Cluster": 0
+  },
+  {
+    "Responden_ID": 7,
+    "Metode_Pembayaran": "Pembeli / Konsumen",
+    "Kemudahan": 5.0,
+    "Kepuasan": 4.0,
+    "Kecepatan": 5.0,
+    "Keamanan": 5.0,
+    "Frekuensi": 4.0,
+    "Cluster": 2
+  },
+  {
+    "Responden_ID": 8,
+    "Metode_Pembayaran": "Pembeli / Konsumen",
+    "Kemudahan": 5.0,
+    "Kepuasan": 1.0,
+    "Kecepatan": 3.0,
+    "Keamanan": 2.0,
+    "Frekuensi": 4.0,
+    "Cluster": 2
+  },
+  {
+    "Responden_ID": 9,
+    "Metode_Pembayaran": "Pelaku UMKM (penjual)",
+    "Kemudahan": 4.0,
+    "Kepuasan": 5.0,
+    "Kecepatan": 5.0,
+    "Keamanan": 5.0,
+    "Frekuensi": 4.0,
+    "Cluster": 0
+  },
+  {
+    "Responden_ID": 10,
+    "Metode_Pembayaran": "Pelaku UMKM (penjual)",
+    "Kemudahan": 4.0,
+    "Kepuasan": 4.0,
+    "Kecepatan": 4.0,
+    "Keamanan": 4.0,
+    "Frekuensi": 5.0,
+    "Cluster": 2
+  },
+  {
+    "Responden_ID": 11,
+    "Metode_Pembayaran": "Pembeli / Konsumen",
+    "Kemudahan": 4.0,
+    "Kepuasan": 5.0,
+    "Kecepatan": 4.0,
+    "Keamanan": 5.0,
+    "Frekuensi": 4.0,
+    "Cluster": 0
+  },
+  {
+    "Responden_ID": 12,
+    "Metode_Pembayaran": "Pembeli / Konsumen",
+    "Kemudahan": 3.0,
+    "Kepuasan": 4.0,
+    "Kecepatan": 4.0,
+    "Keamanan": 4.0,
+    "Frekuensi": 4.0,
+    "Cluster": 0
+  },
+  {
+    "Responden_ID": 13,
+    "Metode_Pembayaran": "Pelaku UMKM (penjual)",
+    "Kemudahan": 4.0,
+    "Kepuasan": 4.0,
+    "Kecepatan": 5.0,
+    "Keamanan": 4.0,
+    "Frekuensi": 4.0,
+    "Cluster": 0
+  },
+  {
+    "Responden_ID": 14,
+    "Metode_Pembayaran": "Pelaku UMKM (penjual)",
+    "Kemudahan": 4.0,
+    "Kepuasan": 4.0,
+    "Kecepatan": 4.0,
+    "Keamanan": 5.0,
+    "Frekuensi": 4.0,
+    "Cluster": 0
+  },
+  {
+    "Responden_ID": 15,
+    "Metode_Pembayaran": "Pembeli / Konsumen",
+    "Kemudahan": 5.0,
+    "Kepuasan": 4.0,
+    "Kecepatan": 4.0,
+    "Keamanan": 5.0,
+    "Frekuensi": 5.0,
+    "Cluster": 2
+  },
+  {
+    "Responden_ID": 16,
+    "Metode_Pembayaran": "Pembeli / Konsumen",
+    "Kemudahan": 5.0,
+    "Kepuasan": 4.0,
+    "Kecepatan": 4.0,
+    "Keamanan": 5.0,
+    "Frekuensi": 5.0,
+    "Cluster": 2
+  },
+  {
+    "Responden_ID": 17,
+    "Metode_Pembayaran": "Pelaku UMKM (penjual)",
+    "Kemudahan": 5.0,
+    "Kepuasan": 4.0,
+    "Kecepatan": 4.0,
+    "Keamanan": 4.0,
+    "Frekuensi": 5.0,
+    "Cluster": 2
+  },
+  {
+    "Responden_ID": 18,
+    "Metode_Pembayaran": "Pelaku UMKM (penjual)",
+    "Kemudahan": 4.0,
+    "Kepuasan": 5.0,
+    "Kecepatan": 5.0,
+    "Keamanan": 3.0,
+    "Frekuensi": 4.0,
+    "Cluster": 0
+  },
+  {
+    "Responden_ID": 19,
+    "Metode_Pembayaran": "Pelaku UMKM (penjual)",
+    "Kemudahan": 4.0,
+    "Kepuasan": 5.0,
+    "Kecepatan": 5.0,
+    "Keamanan": 5.0,
+    "Frekuensi": 5.0,
+    "Cluster": 0
+  },
+  {
+    "Responden_ID": 20,
+    "Metode_Pembayaran": "Pelaku UMKM (penjual)",
+    "Kemudahan": 4.0,
+    "Kepuasan": 5.0,
+    "Kecepatan": 4.0,
+    "Keamanan": 4.0,
+    "Frekuensi": 5.0,
+    "Cluster": 0
+  },
+  {
+    "Responden_ID": 21,
+    "Metode_Pembayaran": "Pembeli / Konsumen",
+    "Kemudahan": 4.0,
+    "Kepuasan": 3.0,
+    "Kecepatan": 4.0,
+    "Keamanan": 5.0,
+    "Frekuensi": 3.0,
+    "Cluster": 2
+  },
+  {
+    "Responden_ID": 22,
+    "Metode_Pembayaran": "Pembeli / Konsumen",
+    "Kemudahan": 5.0,
+    "Kepuasan": 4.0,
+    "Kecepatan": 4.0,
+    "Keamanan": 4.0,
+    "Frekuensi": 4.0,
+    "Cluster": 2
+  },
+  {
+    "Responden_ID": 23,
+    "Metode_Pembayaran": "Pelaku UMKM (penjual)",
+    "Kemudahan": 5.0,
+    "Kepuasan": 5.0,
+    "Kecepatan": 5.0,
+    "Keamanan": 4.0,
+    "Frekuensi": 4.0,
+    "Cluster": 0
+  },
+  {
+    "Responden_ID": 24,
+    "Metode_Pembayaran": "Pembeli / Konsumen",
+    "Kemudahan": 5.0,
+    "Kepuasan": 4.0,
+    "Kecepatan": 4.0,
+    "Keamanan": 4.0,
+    "Frekuensi": 5.0,
+    "Cluster": 2
+  },
+  {
+    "Responden_ID": 25,
+    "Metode_Pembayaran": "Pelaku UMKM (penjual)",
+    "Kemudahan": 3.0,
+    "Kepuasan": 5.0,
+    "Kecepatan": 4.0,
+    "Keamanan": 4.0,
+    "Frekuensi": 5.0,
+    "Cluster": 0
+  },
+  {
+    "Responden_ID": 26,
+    "Metode_Pembayaran": "Pembeli / Konsumen",
+    "Kemudahan": 5.0,
+    "Kepuasan": 4.0,
+    "Kecepatan": 5.0,
+    "Keamanan": 4.0,
+    "Frekuensi": 4.0,
+    "Cluster": 2
+  },
+  {
+    "Responden_ID": 27,
+    "Metode_Pembayaran": "Pelaku UMKM (penjual)",
+    "Kemudahan": 4.0,
+    "Kepuasan": 5.0,
+    "Kecepatan": 4.0,
+    "Keamanan": 5.0,
+    "Frekuensi": 5.0,
+    "Cluster": 0
+  },
+  {
+    "Responden_ID": 28,
+    "Metode_Pembayaran": "Pembeli / Konsumen",
+    "Kemudahan": 4.0,
+    "Kepuasan": 5.0,
+    "Kecepatan": 3.0,
+    "Keamanan": 5.0,
+    "Frekuensi": 4.0,
+    "Cluster": 0
+  },
+  {
+    "Responden_ID": 29,
+    "Metode_Pembayaran": "Pelaku UMKM (penjual)",
+    "Kemudahan": 5.0,
+    "Kepuasan": 4.0,
+    "Kecepatan": 4.0,
+    "Keamanan": 5.0,
+    "Frekuensi": 5.0,
+    "Cluster": 2
+  },
+  {
+    "Responden_ID": 30,
+    "Metode_Pembayaran": "Pembeli / Konsumen",
+    "Kemudahan": 3.0,
+    "Kepuasan": 5.0,
+    "Kecepatan": 5.0,
+    "Keamanan": 4.0,
+    "Frekuensi": 4.0,
+    "Cluster": 0
+  },
+  {
+    "Responden_ID": 31,
+    "Metode_Pembayaran": "Pelaku UMKM (penjual)",
+    "Kemudahan": 4.0,
+    "Kepuasan": 5.0,
+    "Kecepatan": 4.0,
+    "Keamanan": 3.0,
+    "Frekuensi": 3.0,
+    "Cluster": 0
+  },
+  {
+    "Responden_ID": 32,
+    "Metode_Pembayaran": "Pelaku UMKM (penjual)",
+    "Kemudahan": 4.0,
+    "Kepuasan": 5.0,
+    "Kecepatan": 4.0,
+    "Keamanan": 5.0,
+    "Frekuensi": 4.0,
+    "Cluster": 0
+  },
+  {
+    "Responden_ID": 33,
+    "Metode_Pembayaran": "Pembeli / Konsumen",
+    "Kemudahan": 5.0,
+    "Kepuasan": 3.0,
+    "Kecepatan": 5.0,
+    "Keamanan": 4.0,
+    "Frekuensi": 4.0,
+    "Cluster": 2
+  },
+  {
+    "Responden_ID": 34,
+    "Metode_Pembayaran": "Pelaku UMKM (penjual)",
+    "Kemudahan": 4.0,
+    "Kepuasan": 5.0,
+    "Kecepatan": 5.0,
+    "Keamanan": 5.0,
+    "Frekuensi": 4.0,
+    "Cluster": 0
+  },
+  {
+    "Responden_ID": 35,
+    "Metode_Pembayaran": "Pembeli / Konsumen",
+    "Kemudahan": 4.0,
+    "Kepuasan": 5.0,
+    "Kecepatan": 4.0,
+    "Keamanan": 5.0,
+    "Frekuensi": 5.0,
+    "Cluster": 0
+  },
+  {
+    "Responden_ID": 36,
+    "Metode_Pembayaran": "Pelaku UMKM (penjual)",
+    "Kemudahan": 4.0,
+    "Kepuasan": 5.0,
+    "Kecepatan": 4.0,
+    "Keamanan": 4.0,
+    "Frekuensi": 5.0,
+    "Cluster": 0
+  },
+  {
+    "Responden_ID": 37,
+    "Metode_Pembayaran": "Pembeli / Konsumen",
+    "Kemudahan": 4.0,
+    "Kepuasan": 5.0,
+    "Kecepatan": 5.0,
+    "Keamanan": 5.0,
+    "Frekuensi": 5.0,
+    "Cluster": 0
+  },
+  {
+    "Responden_ID": 38,
+    "Metode_Pembayaran": "Pembeli / Konsumen",
+    "Kemudahan": 5.0,
+    "Kepuasan": 5.0,
+    "Kecepatan": 5.0,
+    "Keamanan": 5.0,
+    "Frekuensi": 4.0,
+    "Cluster": 0
+  },
+  {
+    "Responden_ID": 39,
+    "Metode_Pembayaran": "Pelaku UMKM (penjual)",
+    "Kemudahan": 4.0,
+    "Kepuasan": 5.0,
+    "Kecepatan": 4.0,
+    "Keamanan": 4.0,
+    "Frekuensi": 4.0,
+    "Cluster": 0
+  },
+  {
+    "Responden_ID": 40,
+    "Metode_Pembayaran": "Pelaku UMKM (penjual)",
+    "Kemudahan": 5.0,
+    "Kepuasan": 4.0,
+    "Kecepatan": 5.0,
+    "Keamanan": 5.0,
+    "Frekuensi": 4.0,
+    "Cluster": 2
+  },
+  {
+    "Responden_ID": 41,
+    "Metode_Pembayaran": "Pelaku UMKM (penjual)",
+    "Kemudahan": 5.0,
+    "Kepuasan": 4.0,
+    "Kecepatan": 5.0,
+    "Keamanan": 4.0,
+    "Frekuensi": 4.0,
+    "Cluster": 2
+  },
+  {
+    "Responden_ID": 42,
+    "Metode_Pembayaran": "Pelaku UMKM (penjual)",
+    "Kemudahan": 4.0,
+    "Kepuasan": 5.0,
+    "Kecepatan": 4.0,
+    "Keamanan": 4.0,
+    "Frekuensi": 5.0,
+    "Cluster": 0
+  },
+  {
+    "Responden_ID": 43,
+    "Metode_Pembayaran": "Pembeli / Konsumen",
+    "Kemudahan": 5.0,
+    "Kepuasan": 4.0,
+    "Kecepatan": 4.0,
+    "Keamanan": 5.0,
+    "Frekuensi": 4.0,
+    "Cluster": 2
+  },
+  {
+    "Responden_ID": 44,
+    "Metode_Pembayaran": "Pelaku UMKM (penjual)",
+    "Kemudahan": 4.0,
+    "Kepuasan": 5.0,
+    "Kecepatan": 5.0,
+    "Keamanan": 5.0,
+    "Frekuensi": 4.0,
+    "Cluster": 0
+  },
+  {
+    "Responden_ID": 45,
+    "Metode_Pembayaran": "Pembeli / Konsumen",
+    "Kemudahan": 5.0,
+    "Kepuasan": 5.0,
+    "Kecepatan": 5.0,
+    "Keamanan": 4.0,
+    "Frekuensi": 5.0,
+    "Cluster": 0
+  },
+  {
+    "Responden_ID": 46,
+    "Metode_Pembayaran": "Pelaku UMKM (penjual)",
+    "Kemudahan": 5.0,
+    "Kepuasan": 4.0,
+    "Kecepatan": 4.0,
+    "Keamanan": 5.0,
+    "Frekuensi": 4.0,
+    "Cluster": 2
+  },
+  {
+    "Responden_ID": 47,
+    "Metode_Pembayaran": "Pelaku UMKM (penjual)",
+    "Kemudahan": 4.0,
+    "Kepuasan": 5.0,
+    "Kecepatan": 4.0,
+    "Keamanan": 5.0,
+    "Frekuensi": 5.0,
+    "Cluster": 0
+  },
+  {
+    "Responden_ID": 48,
+    "Metode_Pembayaran": "Pembeli / Konsumen",
+    "Kemudahan": 5.0,
+    "Kepuasan": 4.0,
+    "Kecepatan": 4.0,
+    "Keamanan": 5.0,
+    "Frekuensi": 4.0,
+    "Cluster": 2
+  },
+  {
+    "Responden_ID": 49,
+    "Metode_Pembayaran": "Pelaku UMKM (penjual)",
+    "Kemudahan": 4.0,
+    "Kepuasan": 5.0,
+    "Kecepatan": 4.0,
+    "Keamanan": 5.0,
+    "Frekuensi": 4.0,
+    "Cluster": 0
+  },
+  {
+    "Responden_ID": 50,
+    "Metode_Pembayaran": "Pembeli / Konsumen",
+    "Kemudahan": 5.0,
+    "Kepuasan": 4.0,
+    "Kecepatan": 4.0,
+    "Keamanan": 5.0,
+    "Frekuensi": 4.0,
+    "Cluster": 2
+  },
+  {
+    "Responden_ID": 51,
+    "Metode_Pembayaran": "Pembeli / Konsumen",
+    "Kemudahan": 5.0,
+    "Kepuasan": 5.0,
+    "Kecepatan": 5.0,
+    "Keamanan": 4.0,
+    "Frekuensi": 4.0,
+    "Cluster": 0
+  },
+  {
+    "Responden_ID": 52,
+    "Metode_Pembayaran": "Pelaku UMKM (penjual)",
+    "Kemudahan": 5.0,
+    "Kepuasan": 5.0,
+    "Kecepatan": 4.0,
+    "Keamanan": 5.0,
+    "Frekuensi": 5.0,
+    "Cluster": 0
+  },
+  {
+    "Responden_ID": 53,
+    "Metode_Pembayaran": "Pelaku UMKM (penjual)",
+    "Kemudahan": 4.0,
+    "Kepuasan": 5.0,
+    "Kecepatan": 5.0,
+    "Keamanan": 4.0,
+    "Frekuensi": 4.0,
+    "Cluster": 0
+  },
+  {
+    "Responden_ID": 54,
+    "Metode_Pembayaran": "Pembeli / Konsumen",
+    "Kemudahan": 5.0,
+    "Kepuasan": 4.0,
+    "Kecepatan": 4.0,
+    "Keamanan": 5.0,
+    "Frekuensi": 5.0,
+    "Cluster": 2
+  },
+  {
+    "Responden_ID": 55,
+    "Metode_Pembayaran": "Pelaku UMKM (penjual)",
+    "Kemudahan": 4.0,
+    "Kepuasan": 5.0,
+    "Kecepatan": 4.0,
+    "Keamanan": 5.0,
+    "Frekuensi": 4.0,
+    "Cluster": 0
+  },
+  {
+    "Responden_ID": 56,
+    "Metode_Pembayaran": "Pembeli / Konsumen",
+    "Kemudahan": 5.0,
+    "Kepuasan": 4.0,
+    "Kecepatan": 4.0,
+    "Keamanan": 5.0,
+    "Frekuensi": 5.0,
+    "Cluster": 2
+  },
+  {
+    "Responden_ID": 57,
+    "Metode_Pembayaran": "Pelaku UMKM (penjual)",
+    "Kemudahan": 5.0,
+    "Kepuasan": 4.0,
+    "Kecepatan": 4.0,
+    "Keamanan": 5.0,
+    "Frekuensi": 4.0,
+    "Cluster": 2
+  },
+  {
+    "Responden_ID": 58,
+    "Metode_Pembayaran": "Pembeli / Konsumen",
+    "Kemudahan": 5.0,
+    "Kepuasan": 4.0,
+    "Kecepatan": 4.0,
+    "Keamanan": 5.0,
+    "Frekuensi": 5.0,
+    "Cluster": 2
+  },
+  {
+    "Responden_ID": 59,
+    "Metode_Pembayaran": "Pelaku UMKM (penjual)",
+    "Kemudahan": 4.0,
+    "Kepuasan": 3.0,
+    "Kecepatan": 5.0,
+    "Keamanan": 5.0,
+    "Frekuensi": 5.0,
+    "Cluster": 2
+  },
+  {
+    "Responden_ID": 60,
+    "Metode_Pembayaran": "Pelaku UMKM (penjual)",
+    "Kemudahan": 3.0,
+    "Kepuasan": 4.0,
+    "Kecepatan": 4.0,
+    "Keamanan": 4.0,
+    "Frekuensi": 4.0,
+    "Cluster": 0
+  },
+  {
+    "Responden_ID": 61,
+    "Metode_Pembayaran": "Pelaku UMKM (penjual)",
+    "Kemudahan": 4.0,
+    "Kepuasan": 5.0,
+    "Kecepatan": 4.0,
+    "Keamanan": 5.0,
+    "Frekuensi": 4.0,
+    "Cluster": 0
+  },
+  {
+    "Responden_ID": 62,
+    "Metode_Pembayaran": "Pembeli / Konsumen",
+    "Kemudahan": 4.0,
+    "Kepuasan": 5.0,
+    "Kecepatan": 4.0,
+    "Keamanan": 4.0,
+    "Frekuensi": 4.0,
+    "Cluster": 0
+  },
+  {
+    "Responden_ID": 63,
+    "Metode_Pembayaran": "Pembeli / Konsumen",
+    "Kemudahan": 2.0,
+    "Kepuasan": 1.0,
+    "Kecepatan": 1.0,
+    "Keamanan": 1.0,
+    "Frekuensi": 2.0,
+    "Cluster": 1
+  },
+  {
+    "Responden_ID": 64,
+    "Metode_Pembayaran": "Pelaku UMKM (penjual)",
+    "Kemudahan": 5.0,
+    "Kepuasan": 4.0,
+    "Kecepatan": 4.0,
+    "Keamanan": 5.0,
+    "Frekuensi": 4.0,
+    "Cluster": 2
+  },
+  {
+    "Responden_ID": 65,
+    "Metode_Pembayaran": "Pelaku UMKM (penjual)",
+    "Kemudahan": 5.0,
+    "Kepuasan": 3.0,
+    "Kecepatan": 5.0,
+    "Keamanan": 4.0,
+    "Frekuensi": 5.0,
+    "Cluster": 2
+  },
+  {
+    "Responden_ID": 66,
+    "Metode_Pembayaran": "Pelaku UMKM (penjual)",
+    "Kemudahan": 4.0,
+    "Kepuasan": 5.0,
+    "Kecepatan": 4.0,
+    "Keamanan": 4.0,
+    "Frekuensi": 4.0,
+    "Cluster": 0
+  },
+  {
+    "Responden_ID": 67,
+    "Metode_Pembayaran": "Pembeli / Konsumen",
+    "Kemudahan": 1.0,
+    "Kepuasan": 2.0,
+    "Kecepatan": 2.0,
+    "Keamanan": 1.0,
+    "Frekuensi": 1.0,
+    "Cluster": 1
+  },
+  {
+    "Responden_ID": 68,
+    "Metode_Pembayaran": "Pembeli / Konsumen",
+    "Kemudahan": 5.0,
+    "Kepuasan": 4.0,
+    "Kecepatan": 4.0,
+    "Keamanan": 5.0,
+    "Frekuensi": 5.0,
+    "Cluster": 2
+  },
+  {
+    "Responden_ID": 69,
+    "Metode_Pembayaran": "Pembeli / Konsumen",
+    "Kemudahan": 1.0,
+    "Kepuasan": 1.0,
+    "Kecepatan": 1.0,
+    "Keamanan": 2.0,
+    "Frekuensi": 2.0,
+    "Cluster": 1
+  },
+  {
+    "Responden_ID": 70,
+    "Metode_Pembayaran": "Pembeli / Konsumen",
+    "Kemudahan": 1.0,
+    "Kepuasan": 3.0,
+    "Kecepatan": 1.0,
+    "Keamanan": 2.0,
+    "Frekuensi": 2.0,
+    "Cluster": 1
+  },
+  {
+    "Responden_ID": 71,
+    "Metode_Pembayaran": "Pembeli / Konsumen",
+    "Kemudahan": 5.0,
+    "Kepuasan": 4.0,
+    "Kecepatan": 4.0,
+    "Keamanan": 5.0,
+    "Frekuensi": 5.0,
+    "Cluster": 2
+  },
+  {
+    "Responden_ID": 72,
+    "Metode_Pembayaran": "Pelaku UMKM (penjual)",
+    "Kemudahan": 5.0,
+    "Kepuasan": 4.0,
+    "Kecepatan": 5.0,
+    "Keamanan": 5.0,
+    "Frekuensi": 4.0,
+    "Cluster": 2
+  },
+  {
+    "Responden_ID": 73,
+    "Metode_Pembayaran": "Pelaku UMKM (penjual)",
+    "Kemudahan": 3.0,
+    "Kepuasan": 1.0,
+    "Kecepatan": 2.0,
+    "Keamanan": 2.0,
+    "Frekuensi": 1.0,
+    "Cluster": 1
+  },
+  {
+    "Responden_ID": 74,
+    "Metode_Pembayaran": "Pembeli / Konsumen",
+    "Kemudahan": 4.0,
+    "Kepuasan": 5.0,
+    "Kecepatan": 4.0,
+    "Keamanan": 5.0,
+    "Frekuensi": 5.0,
+    "Cluster": 0
+  },
+  {
+    "Responden_ID": 75,
+    "Metode_Pembayaran": "Pembeli / Konsumen",
+    "Kemudahan": 1.0,
+    "Kepuasan": 2.0,
+    "Kecepatan": 2.0,
+    "Keamanan": 1.0,
+    "Frekuensi": 1.0,
+    "Cluster": 1
+  },
+  {
+    "Responden_ID": 76,
+    "Metode_Pembayaran": "Pelaku UMKM (penjual)",
+    "Kemudahan": 5.0,
+    "Kepuasan": 3.0,
+    "Kecepatan": 4.0,
+    "Keamanan": 5.0,
+    "Frekuensi": 5.0,
+    "Cluster": 2
+  },
+  {
+    "Responden_ID": 77,
+    "Metode_Pembayaran": "Pelaku UMKM (penjual)",
+    "Kemudahan": 5.0,
+    "Kepuasan": 4.0,
+    "Kecepatan": 4.0,
+    "Keamanan": 5.0,
+    "Frekuensi": 5.0,
+    "Cluster": 2
+  },
+  {
+    "Responden_ID": 78,
+    "Metode_Pembayaran": "Pembeli / Konsumen",
+    "Kemudahan": 3.0,
+    "Kepuasan": 1.0,
+    "Kecepatan": 1.0,
+    "Keamanan": 2.0,
+    "Frekuensi": 1.0,
+    "Cluster": 1
+  },
+  {
+    "Responden_ID": 79,
+    "Metode_Pembayaran": "Pembeli / Konsumen",
+    "Kemudahan": 5.0,
+    "Kepuasan": 4.0,
+    "Kecepatan": 4.0,
+    "Keamanan": 4.0,
+    "Frekuensi": 4.0,
+    "Cluster": 2
+  },
+  {
+    "Responden_ID": 80,
+    "Metode_Pembayaran": "Pembeli / Konsumen",
+    "Kemudahan": 3.0,
+    "Kepuasan": 2.0,
+    "Kecepatan": 1.0,
+    "Keamanan": 2.0,
+    "Frekuensi": 1.0,
+    "Cluster": 1
+  },
+  {
+    "Responden_ID": 81,
+    "Metode_Pembayaran": "Pembeli / Konsumen",
+    "Kemudahan": 4.0,
+    "Kepuasan": 5.0,
+    "Kecepatan": 4.0,
+    "Keamanan": 5.0,
+    "Frekuensi": 4.0,
+    "Cluster": 0
+  },
+  {
+    "Responden_ID": 82,
+    "Metode_Pembayaran": "Pembeli / Konsumen",
+    "Kemudahan": 1.0,
+    "Kepuasan": 2.0,
+    "Kecepatan": 2.0,
+    "Keamanan": 1.0,
+    "Frekuensi": 1.0,
+    "Cluster": 1
+  },
+  {
+    "Responden_ID": 83,
+    "Metode_Pembayaran": "Pelaku UMKM (penjual)",
+    "Kemudahan": 5.0,
+    "Kepuasan": 4.0,
+    "Kecepatan": 4.0,
+    "Keamanan": 4.0,
+    "Frekuensi": 5.0,
+    "Cluster": 2
+  },
+  {
+    "Responden_ID": 84,
+    "Metode_Pembayaran": "Pelaku UMKM (penjual)",
+    "Kemudahan": 5.0,
+    "Kepuasan": 4.0,
+    "Kecepatan": 4.0,
+    "Keamanan": 5.0,
+    "Frekuensi": 5.0,
+    "Cluster": 2
+  },
+  {
+    "Responden_ID": 85,
+    "Metode_Pembayaran": "Pembeli / Konsumen",
+    "Kemudahan": 2.0,
+    "Kepuasan": 1.0,
+    "Kecepatan": 1.0,
+    "Keamanan": 3.0,
+    "Frekuensi": 2.0,
+    "Cluster": 1
+  },
+  {
+    "Responden_ID": 86,
+    "Metode_Pembayaran": "Pembeli / Konsumen",
+    "Kemudahan": 2.0,
+    "Kepuasan": 2.0,
+    "Kecepatan": 2.0,
+    "Keamanan": 1.0,
+    "Frekuensi": 1.0,
+    "Cluster": 1
+  },
+  {
+    "Responden_ID": 87,
+    "Metode_Pembayaran": "Pembeli / Konsumen",
+    "Kemudahan": 5.0,
+    "Kepuasan": 4.0,
+    "Kecepatan": 4.0,
+    "Keamanan": 4.0,
+    "Frekuensi": 5.0,
+    "Cluster": 2
+  },
+  {
+    "Responden_ID": 88,
+    "Metode_Pembayaran": "Pembeli / Konsumen",
+    "Kemudahan": 1.0,
+    "Kepuasan": 1.0,
+    "Kecepatan": 2.0,
+    "Keamanan": 2.0,
+    "Frekuensi": 3.0,
+    "Cluster": 1
+  },
+  {
+    "Responden_ID": 89,
+    "Metode_Pembayaran": "Pelaku UMKM (penjual)",
+    "Kemudahan": 5.0,
+    "Kepuasan": 4.0,
+    "Kecepatan": 4.0,
+    "Keamanan": 5.0,
+    "Frekuensi": 5.0,
+    "Cluster": 2
+  },
+  {
+    "Responden_ID": 90,
+    "Metode_Pembayaran": "Pelaku UMKM (penjual)",
+    "Kemudahan": 1.0,
+    "Kepuasan": 2.0,
+    "Kecepatan": 1.0,
+    "Keamanan": 1.0,
+    "Frekuensi": 1.0,
+    "Cluster": 1
+  },
+  {
+    "Responden_ID": 91,
+    "Metode_Pembayaran": "Pembeli / Konsumen",
+    "Kemudahan": 2.0,
+    "Kepuasan": 2.0,
+    "Kecepatan": 1.0,
+    "Keamanan": 3.0,
+    "Frekuensi": 1.0,
+    "Cluster": 1
+  },
+  {
+    "Responden_ID": 92,
+    "Metode_Pembayaran": "Pembeli / Konsumen",
+    "Kemudahan": 5.0,
+    "Kepuasan": 4.0,
+    "Kecepatan": 5.0,
+    "Keamanan": 4.0,
+    "Frekuensi": 4.0,
+    "Cluster": 2
+  },
+  {
+    "Responden_ID": 93,
+    "Metode_Pembayaran": "Pembeli / Konsumen",
+    "Kemudahan": 2.0,
+    "Kepuasan": 1.0,
+    "Kecepatan": 3.0,
+    "Keamanan": 2.0,
+    "Frekuensi": 2.0,
+    "Cluster": 1
+  },
+  {
+    "Responden_ID": 94,
+    "Metode_Pembayaran": "Pelaku UMKM (penjual)",
+    "Kemudahan": 4.0,
+    "Kepuasan": 5.0,
+    "Kecepatan": 4.0,
+    "Keamanan": 4.0,
+    "Frekuensi": 5.0,
+    "Cluster": 0
+  },
+  {
+    "Responden_ID": 95,
+    "Metode_Pembayaran": "Pembeli / Konsumen",
+    "Kemudahan": 1.0,
+    "Kepuasan": 2.0,
+    "Kecepatan": 2.0,
+    "Keamanan": 1.0,
+    "Frekuensi": 1.0,
+    "Cluster": 1
+  },
+  {
+    "Responden_ID": 96,
+    "Metode_Pembayaran": "Pelaku UMKM (penjual)",
+    "Kemudahan": 5.0,
+    "Kepuasan": 4.0,
+    "Kecepatan": 4.0,
+    "Keamanan": 5.0,
+    "Frekuensi": 4.0,
+    "Cluster": 2
+  },
+  {
+    "Responden_ID": 97,
+    "Metode_Pembayaran": "Pembeli / Konsumen",
+    "Kemudahan": 5.0,
+    "Kepuasan": 3.0,
+    "Kecepatan": 4.0,
+    "Keamanan": 5.0,
+    "Frekuensi": 4.0,
+    "Cluster": 2
+  },
+  {
+    "Responden_ID": 98,
+    "Metode_Pembayaran": "Pelaku UMKM (penjual)",
+    "Kemudahan": 2.0,
+    "Kepuasan": 1.0,
+    "Kecepatan": 1.0,
+    "Keamanan": 2.0,
+    "Frekuensi": 2.0,
+    "Cluster": 1
+  },
+  {
+    "Responden_ID": 99,
+    "Metode_Pembayaran": "Pembeli / Konsumen",
+    "Kemudahan": 2.0,
+    "Kepuasan": 3.0,
+    "Kecepatan": 3.0,
+    "Keamanan": 1.0,
+    "Frekuensi": 2.0,
+    "Cluster": 1
+  },
+  {
+    "Responden_ID": 100,
+    "Metode_Pembayaran": "Pembeli / Konsumen",
+    "Kemudahan": 2.0,
+    "Kepuasan": 3.0,
+    "Kecepatan": 2.0,
+    "Keamanan": 1.0,
+    "Frekuensi": 1.0,
+    "Cluster": 1
+  },
+  {
+    "Responden_ID": 101,
+    "Metode_Pembayaran": "Pelaku UMKM (penjual)",
+    "Kemudahan": 3.0,
+    "Kepuasan": 1.0,
+    "Kecepatan": 2.0,
+    "Keamanan": 2.0,
+    "Frekuensi": 1.0,
+    "Cluster": 1
+  }
+]

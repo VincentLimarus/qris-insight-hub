@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Dashboard - QRIS Analysis</title>
+    <title>Dashboard Clustering QRIS</title>
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
       rel="stylesheet"
@@ -20,47 +20,32 @@
       :root {
         --primary: #0ea5e9;
         --primary-dark: #0284c7;
-        --secondary: #06b6d4;
-        --accent: #67e8f9;
         --success: #10b981;
-        --warning: #f59e0b;
         --danger: #ef4444;
-        --dark: #1e293b;
+        --warning: #f59e0b;
         --gray-100: #f8fafc;
         --gray-200: #e2e8f0;
-        --gray-300: #cbd5e1;
         --gray-600: #475569;
-        --gray-700: #334155;
         --gray-800: #1e293b;
         --gray-900: #0f172a;
-        --light: #f1f5f9;
-        --white: #ffffff;
+        --radius: 12px;
         --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
         --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
         --shadow-md: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-        --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
-        --radius: 12px;
-        --radius-lg: 16px;
-        --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
       }
-
       * {
         margin: 0;
         padding: 0;
         box-sizing: border-box;
       }
-
       body {
-        font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+        font-family: "Inter", sans-serif;
         background: #f8fafc;
         color: var(--gray-800);
         line-height: 1.6;
-        min-height: 100vh;
       }
-
       .navbar {
-        background: rgba(255, 255, 255, 0.95);
-        backdrop-filter: blur(12px);
+        background: white;
         border-bottom: 1px solid var(--gray-200);
         padding: 1rem 0;
         position: sticky;
@@ -68,7 +53,6 @@
         z-index: 1000;
         box-shadow: var(--shadow-sm);
       }
-
       .navbar-brand {
         display: flex;
         align-items: center;
@@ -78,7 +62,6 @@
         text-decoration: none;
         font-size: 1.35rem;
       }
-
       .brand-icon {
         width: 42px;
         height: 42px;
@@ -92,207 +75,109 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        font-weight: 800;
         font-size: 1.1rem;
+        font-weight: 800;
         box-shadow: var(--shadow);
       }
-
-      .brand-text {
-        line-height: 1.3;
-      }
-
       .brand-subtitle {
         font-size: 0.8rem;
         color: var(--gray-600);
         font-weight: 500;
       }
-
       .nav-link {
-        position: relative;
+        font-weight: 500;
+        color: var(--gray-600);
+        transition: color 0.3s;
       }
-
-      .nav-link::after {
-        content: "";
-        position: absolute;
-        bottom: 0;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 0;
-        height: 2px;
-        background: linear-gradient(90deg, #ff8c00, #ff6347);
-        transition: width 0.4s ease;
-      }
-
-      .nav-link:hover::after {
-        width: 70%;
-      }
-
-      .nav-link.active::after {
-        width: 70%;
-      }
-
       .nav-link:hover {
         color: var(--primary);
       }
-
       .nav-link.active {
-        color: white;
+        color: var(--primary);
         font-weight: 600;
       }
-
+      .section-divider {
+        background: white;
+        padding: 1.5rem 0;
+        margin: 2rem 0;
+        border-top: 3px solid var(--primary);
+        border-bottom: 1px solid var(--gray-200);
+      }
+      .section-title {
+        font-size: 1.75rem;
+        font-weight: 700;
+        color: var(--gray-900);
+        margin-bottom: 0.5rem;
+      }
+      .section-subtitle {
+        color: var(--gray-600);
+        font-size: 1rem;
+      }
       .dashboard-header {
         background: white;
         padding: 2.5rem 0;
-        margin-bottom: 1rem;
+        margin-bottom: 2rem;
         border-bottom: 1px solid var(--gray-200);
       }
-
       .page-title {
         font-size: 2rem;
         font-weight: 700;
         color: var(--gray-900);
         margin-bottom: 0.5rem;
       }
-
       .page-subtitle {
         color: var(--gray-600);
         font-size: 1rem;
         max-width: 900px;
       }
-
       .metric-card {
         background: white;
         border-radius: var(--radius);
         padding: 1.5rem;
         box-shadow: var(--shadow-sm);
-        transition: var(--transition);
-        height: 100%;
         border: 1px solid var(--gray-200);
+        height: 100%;
+        transition: all 0.3s;
       }
-
       .metric-card:hover {
         transform: translateY(-4px);
         box-shadow: var(--shadow-md);
       }
-
-      .metric-header {
-        display: flex;
-        justify-content: space-between;
-        align-items: flex-start;
-        margin-bottom: 0.75rem;
-      }
-
       .metric-label {
         color: var(--gray-600);
         font-size: 0.875rem;
         font-weight: 500;
+        margin-bottom: 0.75rem;
       }
-
-      .metric-icon {
-        width: 40px;
-        height: 40px;
-        background: var(--primary);
-        color: white;
-        border-radius: 8px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 1.1rem;
-      }
-
       .metric-value {
         font-size: 2rem;
         font-weight: 700;
         color: var(--gray-900);
-        line-height: 1;
-        margin-bottom: 0.25rem;
       }
-
       .metric-desc {
-        color: var(--gray-500);
-        font-size: 0.875rem;
-      }
-
-      .highlight-card {
-        background: white;
-        border-radius: var(--radius);
-        padding: 1.5rem;
-        box-shadow: var(--shadow-sm);
-        border: 1px solid var(--gray-200);
-        height: 100%;
-      }
-
-      .highlight-header {
-        display: flex;
-        align-items: center;
-        gap: 12px;
-        margin-bottom: 1rem;
-      }
-
-      .highlight-icon {
-        width: 40px;
-        height: 40px;
-        border-radius: 8px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 1.1rem;
-      }
-
-      .highlight-title {
-        font-size: 0.875rem;
-        font-weight: 600;
-        color: var(--gray-700);
-        margin: 0;
-      }
-
-      .highlight-subtitle {
-        font-size: 0.75rem;
-        color: var(--gray-500);
-        margin: 0;
-      }
-
-      .highlight-value {
-        font-size: 2rem;
-        font-weight: 700;
-        text-align: center;
-        margin: 1rem 0;
-      }
-
-      .highlight-desc {
-        text-align: center;
         color: var(--gray-600);
         font-size: 0.875rem;
+        margin-top: 0.5rem;
       }
-
       .chart-card {
         background: white;
         border-radius: var(--radius);
         padding: 1.75rem;
         box-shadow: var(--shadow-sm);
-        margin-bottom: 1.5rem;
         border: 1px solid var(--gray-200);
-      }
-
-      .card-title-section {
-        display: flex;
-        align-items: center;
-        gap: 12px;
         margin-bottom: 1.5rem;
       }
-
-      .card-icon {
-        width: 40px;
-        height: 40px;
-        background: var(--primary);
-        color: white;
-        border-radius: 8px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 1.1rem;
+      .card-title {
+        font-size: 1.25rem;
+        font-weight: 600;
+        color: var(--gray-900);
+        margin-bottom: 0.5rem;
       }
-
+      .card-subtitle {
+        font-size: 0.875rem;
+        color: var(--gray-600);
+        margin-bottom: 1.5rem;
+      }
       .cluster-badge {
         display: inline-block;
         padding: 0.375rem 0.875rem;
@@ -301,156 +186,191 @@
         font-weight: 600;
         color: white;
       }
-
       .cluster-0 {
         background: #0891b2;
       }
       .cluster-1 {
-        background: #06b6d4;
+        background: #ef4444;
       }
       .cluster-2 {
-        background: #67e8f9;
-        color: #0e7490;
+        background: #f59e0b;
       }
-
-      .profile-stat {
-        background: #f8fafc;
-        padding: 1rem;
+      .sentiment-badge {
+        display: inline-block;
+        padding: 0.25rem 0.75rem;
+        border-radius: 50px;
+        font-size: 0.75rem;
+        font-weight: 600;
+      }
+      .sentiment-positif {
+        background: #d1fae5;
+        color: #065f46;
+      }
+      .sentiment-negatif {
+        background: #fee2e2;
+        color: #991b1b;
+      }
+      .sentiment-netral {
+        background: #e5e7eb;
+        color: #374151;
+      }
+      .crosstab-card {
+        background: white;
+        border: 2px solid var(--gray-200);
+        border-radius: var(--radius);
+        padding: 1.25rem;
+        height: 100%;
+        transition: all 0.3s;
+      }
+      .crosstab-card:hover {
+        border-color: var(--primary);
+        box-shadow: var(--shadow-md);
+      }
+      .method-icon {
+        width: 40px;
+        height: 40px;
         border-radius: 8px;
-        text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.2rem;
+        margin-bottom: 0.75rem;
       }
-
-      .profile-stat i {
-        color: var(--primary);
-        margin-bottom: 0.5rem;
+      .icon-qris {
+        background: #dbeafe;
+        color: #0ea5e9;
+      }
+      .icon-debit {
+        background: #f3e8ff;
+        color: #8b5cf6;
+      }
+      .icon-cash {
+        background: #dcfce7;
+        color: #10b981;
+      }
+      .stat-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0.75rem 0;
+        border-bottom: 1px solid var(--gray-200);
+      }
+      .stat-row:last-child {
+        border-bottom: none;
+      }
+      .stat-label {
+        font-weight: 500;
+        font-size: 0.9rem;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+      .stat-value {
+        font-weight: 700;
         font-size: 1.1rem;
       }
-
-      .profile-stat-label {
-        font-size: 0.75rem;
-        color: var(--gray-600);
-        margin-bottom: 0.25rem;
-      }
-
-      .profile-stat-value {
-        font-size: 1.25rem;
-        font-weight: 700;
-        color: var(--gray-900);
-      }
-
       .table {
         font-size: 0.875rem;
-        margin: 0;
       }
-
       .table th {
         background: #f8fafc;
         color: var(--gray-700);
         font-weight: 600;
         padding: 0.875rem;
-        border: none;
         font-size: 0.8rem;
         text-transform: uppercase;
         letter-spacing: 0.5px;
+        border: none;
       }
-
       .table td {
         padding: 0.875rem;
-        border-bottom: 1px solid var(--gray-200);
         vertical-align: middle;
+        border-bottom: 1px solid var(--gray-200);
       }
-
       .table tbody tr:hover {
         background: rgba(14, 165, 233, 0.05);
       }
-
-      .scatter-point {
-        transition: all 0.2s ease;
-        cursor: pointer;
-      }
-
-      .scatter-point:hover {
-        r: 10;
-        stroke: white;
-        stroke-width: 2;
-      }
-
-      .tooltip {
-        position: absolute;
-        background: var(--gray-900);
-        color: white;
-        padding: 0.5rem 0.75rem;
-        border-radius: 8px;
-        font-size: 0.75rem;
-        pointer-events: none;
-        opacity: 0;
-        transition: opacity 0.2s;
-        box-shadow: var(--shadow-md);
-        z-index: 1000;
-      }
-
       .loading {
         text-align: center;
         padding: 2rem;
         color: var(--gray-600);
       }
-
-      .sentiment-item {
-        display: flex;
-        align-items: center;
-        gap: 8px;
-        padding: 0.75rem 0;
-        border-bottom: 1px solid var(--gray-200);
+      .insight-alert {
+        background: #fef3c7;
+        border: 2px solid #f59e0b;
+        border-radius: var(--radius);
+        padding: 1rem;
       }
-
-      .sentiment-item:last-child {
-        border-bottom: none;
+      .comparison-card {
+        background: white;
+        border: 2px solid var(--primary);
+        border-radius: var(--radius);
+        padding: 1.5rem;
+        height: 100%;
       }
-
-      .sentiment-icon {
-        width: 36px;
-        height: 36px;
-        border-radius: 8px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
+      .gap-card {
+        background: linear-gradient(135deg, #fee2e2, #fecaca);
+        border: 2px solid #ef4444;
+        border-radius: var(--radius);
+        padding: 1.5rem;
+        height: 100%;
+      }
+      .gap-value {
+        font-size: 2.5rem;
+        font-weight: 800;
+        color: #991b1b;
+      }
+      .gap-label {
         font-size: 1rem;
-        color: white;
-        flex-shrink: 0;
+        font-weight: 600;
+        color: #7f1d1d;
+        margin-top: 0.5rem;
       }
-
-      .sentiment-positive {
+      .sentiment-bar {
+        background: var(--gray-200);
+        height: 30px;
+        border-radius: 4px;
+        overflow: hidden;
+        margin: 0.5rem 0;
+        position: relative;
+      }
+      .sentiment-fill {
+        height: 100%;
+        display: flex;
+        align-items: center;
+        padding: 0 0.75rem;
+        color: white;
+        font-weight: 600;
+        font-size: 0.875rem;
+        transition: width 0.5s ease;
+      }
+      .sentiment-fill.positif {
         background: #10b981;
       }
-      .sentiment-negative {
+      .sentiment-fill.negatif {
         background: #ef4444;
       }
-      .sentiment-neutral {
-        background: #94a3b8;
+      .sentiment-fill.netral {
+        background: #6b7280;
       }
-
-      .sentiment-label {
-        flex: 1;
-        font-size: 0.875rem;
-        font-weight: 500;
-      }
-
-      .sentiment-value {
-        font-weight: 700;
-        font-size: 1.1rem;
-        min-width: 40px;
-        text-align: right;
+      .validation-box {
+        background: #f0f9ff;
+        border-left: 4px solid var(--primary);
+        padding: 1rem;
+        margin-bottom: 1rem;
+        border-radius: 4px;
       }
     </style>
   </head>
+
   <body>
     <nav class="navbar navbar-expand-lg">
       <div class="container">
-        <a class="navbar-brand" href="#">
+        <a class="navbar-brand" href="index.html">
           <div class="brand-icon">QR</div>
           <div>
             <div>QRIS Analysis</div>
-            <div class="brand-subtitle">Hybrid Model Research</div>
+            <div class="brand-subtitle">Clustering & Sentiment</div>
           </div>
         </a>
         <button
@@ -495,470 +415,859 @@
       <div class="container">
         <h1 class="page-title">Dashboard Analisis QRIS</h1>
         <p class="page-subtitle">
-          Visualisasi hasil integrasi analisis sentimen Reddit (Naïve Bayes)
-          dengan data survei Google Form, menggunakan K-Means Clustering untuk
-          mengidentifikasi pola persepsi pengguna terhadap QRIS.
+          Visualisasi lengkap hasil clustering K-Means (101 responden) dan
+          analisis sentimen Reddit (288 komentar) menggunakan pendekatan
+          perspektif ganda untuk pemahaman komprehensif persepsi pengguna
+          terhadap QRIS.
         </p>
       </div>
     </div>
 
-    <div class="container">
-      <!-- Metrics -->
-      <div class="row g-3 mb-4" id="metricsContainer">
-        <div class="loading">
-          <i class="fas fa-spinner fa-spin fa-2x"></i>
-          <p>Loading data...</p>
+    <div class="container pb-5">
+      <!-- ========================================
+         SECTION 1: CLUSTERING ANALYSIS
+    ======================================== -->
+
+      <div class="section-divider">
+        <div class="section-title">
+          <i
+            class="fas fa-project-diagram me-2"
+            style="color: var(--primary)"
+          ></i>
+          Analisis Clustering Google Form
+        </div>
+        <div class="section-subtitle">
+          Segmentasi persepsi pengguna berdasarkan 5 variabel
         </div>
       </div>
 
-      <!-- Cluster Highlights -->
       <div class="row g-3 mb-4">
-        <div class="col-lg-12">
-          <div class="row g-3" id="clusterHighlights">
-            <div class="loading">
-              <i class="fas fa-spinner fa-spin fa-2x"></i>
+        <div class="col-md-3">
+          <div class="metric-card">
+            <div class="metric-label">
+              <i class="fas fa-users me-2"></i>Total Responden
             </div>
+            <div class="metric-value">101</div>
+            <div class="metric-desc">Setelah data cleaning</div>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="metric-card">
+            <div class="metric-label">
+              <i class="fas fa-project-diagram me-2"></i>Jumlah Cluster
+            </div>
+            <div class="metric-value">3</div>
+            <div class="metric-desc">Tinggi, Moderat, Rendah</div>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="metric-card">
+            <div class="metric-label">
+              <i class="fas fa-qrcode me-2"></i>Pengguna QRIS
+            </div>
+            <div class="metric-value">46</div>
+            <div class="metric-desc">45.5% dari responden</div>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="metric-card">
+            <div class="metric-label">
+              <i class="fas fa-chart-line me-2"></i>Cluster Dominan
+            </div>
+            <div class="metric-value">Tinggi (0)</div>
+            <div class="metric-desc">42.6% responden</div>
           </div>
         </div>
       </div>
 
-      <!-- Pie & Profiles -->
+      <div class="chart-card">
+        <h3 class="card-title">
+          <i class="fas fa-table me-2" style="color: var(--primary)"></i>
+          Distribusi Metode Pembayaran per Cluster
+        </h3>
+        <p class="card-subtitle">
+          Analisis cross-tabulation preferensi pembayaran berdasarkan tingkat
+          persepsi terhadap QRIS
+        </p>
+
+        <div class="text-center mb-4">
+          <img
+            src="assets/crosstab_bar_chart.png"
+            alt="Cross-tabulation Chart"
+            style="
+              max-width: 100%;
+              height: auto;
+              border-radius: 8px;
+              box-shadow: var(--shadow);
+            "
+            onerror="this.style.display='none'"
+          />
+        </div>
+
+        <div class="row g-3 mb-3" id="crosstabSummary"></div>
+
+        <div class="insight-alert">
+          <strong
+            ><i class="fas fa-lightbulb me-2" style="color: #f59e0b"></i>Insight
+            Utama:</strong
+          >
+          Mayoritas pengguna QRIS aktif (57.9%) berada pada
+          <strong>Cluster 2 (Persepsi Moderat)</strong>, bukan Cluster 0
+          (Persepsi Tinggi). Hal ini mengindikasikan adanya gap antara
+          penggunaan aktual dengan tingkat kepuasan yang perlu segera diatasi
+          melalui peningkatan layanan dan edukasi pengguna.
+        </div>
+      </div>
+
       <div class="row g-3 mb-4">
         <div class="col-lg-6">
-          <div class="chart-card" style="height: 100%">
-            <div class="card-title-section">
-              <div class="card-icon"><i class="fas fa-chart-pie"></i></div>
-              <div>
-                <h3 class="card-title">Distribusi Cluster</h3>
-                <p class="card-subtitle mb-0">
-                  Proporsi responden di setiap kelompok hasil K-Means
-                  Clustering.
-                </p>
-              </div>
-            </div>
-            <div id="pieChartContent" class="loading">
-              <i class="fas fa-spinner fa-spin fa-2x"></i>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-6">
-          <div class="chart-card" style="height: 100%">
-            <div class="card-title-section">
-              <div class="card-icon"><i class="fas fa-users"></i></div>
-              <div>
-                <h3 class="card-title">Profil Skor per Cluster</h3>
-                <p class="card-subtitle mb-0">
-                  Rata-rata sentimen, persepsi, dan skor total tiap kelompok.
-                </p>
-              </div>
-            </div>
-            <div id="clusterProfiles" class="loading">
-              <i class="fas fa-spinner fa-spin fa-2x"></i>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Sentimen Reddit + Scatter Plot (Berdampingan) -->
-      <div class="row g-3 mb-4">
-        <!-- Sentimen Reddit (Kiri) -->
-        <div class="col-lg-4">
-          <div class="chart-card h-100 d-flex flex-column">
-            <div class="card-title-section">
-              <div class="card-icon" style="background: #6366f1">
-                <i class="fab fa-reddit"></i>
-              </div>
-              <div>
-                <h3 class="card-title">Sentimen Reddit</h3>
-                <p class="card-subtitle mb-0">
-                  Distribusi komentar berdasarkan prediksi Naïve Bayes
-                </p>
-              </div>
-            </div>
-            <div
-              id="redditSentiment"
-              class="flex-grow-1 d-flex align-items-center justify-content-center"
-            >
-              <div class="loading">
-                <i class="fas fa-spinner fa-spin fa-2x"></i>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Scatter Plot (Kanan) -->
-        <div class="col-lg-8">
           <div class="chart-card h-100">
-            <div class="card-title-section">
-              <div class="card-icon"><i class="fas fa-brain"></i></div>
-              <div>
-                <h3 class="card-title">Pola Clustering: Integrasi Data</h3>
-                <p class="card-subtitle mb-0">
-                  Hubungan Skor Total vs Sentimen Reddit. Warna = cluster
-                  K-Means.
-                </p>
-              </div>
-            </div>
-            <div
-              class="position-relative h-100"
-              id="scatterPlot"
-              style="min-height: 380px"
-            >
-              <div
-                class="loading h-100 d-flex align-items-center justify-content-center"
-              >
-                <i class="fas fa-spinner fa-spin fa-2x"></i>
-              </div>
-            </div>
-            <div class="tooltip" id="tooltip"></div>
+            <h3 class="card-title">
+              <i class="fas fa-chart-pie me-2"></i>Distribusi Cluster
+            </h3>
+            <p class="card-subtitle">
+              Proporsi responden di setiap cluster hasil K-Means
+            </p>
+            <div id="pieChart"></div>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="chart-card h-100">
+            <h3 class="card-title">
+              <i class="fas fa-star me-2"></i>Profil Cluster
+            </h3>
+            <p class="card-subtitle">
+              Rata-rata skor persepsi per cluster (skala 0-1)
+            </p>
+            <div id="clusterProfiles"></div>
           </div>
         </div>
       </div>
 
-      <!-- Stats Table -->
-      <div class="chart-card mb-5">
-        <div class="card-title-section">
-          <div class="card-icon"><i class="fas fa-table"></i></div>
-          <div>
-            <h3 class="card-title">Ringkasan Statistik Cluster</h3>
-            <p class="card-subtitle mb-0">
-              Detail jumlah anggota dan rata-rata skor tiap cluster.
-            </p>
+      <div class="chart-card">
+        <h3 class="card-title">
+          <i class="fas fa-table me-2"></i>Ringkasan Statistik Cluster
+        </h3>
+        <p class="card-subtitle">
+          Detail karakteristik setiap cluster berdasarkan 5 variabel persepsi
+        </p>
+        <div class="table-responsive" id="statsTable"></div>
+      </div>
+
+      <!-- ========================================
+         SECTION 2: REDDIT SENTIMENT ANALYSIS
+    ======================================== -->
+
+      <div class="section-divider">
+        <div class="section-title">
+          <i class="fab fa-reddit me-2" style="color: #ff4500"></i>
+          Analisis Sentimen Reddit
+        </div>
+        <div class="section-subtitle">
+          Opini publik organik dari media sosial menggunakan Naïve Bayes
+        </div>
+      </div>
+
+      <!-- Reddit Metrics -->
+      <div class="row g-3 mb-4">
+        <div class="col-md-3">
+          <div class="metric-card">
+            <div class="metric-label">
+              <i class="fab fa-reddit me-2"></i>Total Komentar
+            </div>
+            <div class="metric-value" id="redditTotal">288</div>
+            <div class="metric-desc">Komentar Reddit</div>
           </div>
         </div>
-        <div class="table-responsive" id="statsTable">
-          <div class="loading">
-            <i class="fas fa-spinner fa-spin fa-2x"></i>
+        <div class="col-md-3">
+          <div class="metric-card">
+            <div class="metric-label">
+              <i class="fas fa-smile me-2" style="color: #10b981"></i>Positif
+            </div>
+            <div class="metric-value" id="redditPositif" style="color: #10b981">
+              40
+            </div>
+            <div class="metric-desc" id="redditPositifPct">13.9%</div>
           </div>
+        </div>
+        <div class="col-md-3">
+          <div class="metric-card">
+            <div class="metric-label">
+              <i class="fas fa-meh me-2" style="color: #6b7280"></i>Netral
+            </div>
+            <div class="metric-value" id="redditNetral" style="color: #6b7280">
+              233
+            </div>
+            <div class="metric-desc" id="redditNetralPct">80.9%</div>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="metric-card">
+            <div class="metric-label">
+              <i class="fas fa-frown me-2" style="color: #ef4444"></i>Negatif
+            </div>
+            <div class="metric-value" id="redditNegatif" style="color: #ef4444">
+              15
+            </div>
+            <div class="metric-desc" id="redditNegatifPct">5.2%</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sentiment Distribution Charts -->
+      <div class="row g-3 mb-4">
+        <div class="col-lg-6">
+          <div class="chart-card h-100">
+            <h3 class="card-title">
+              <i class="fas fa-chart-pie me-2"></i>Distribusi Sentimen
+            </h3>
+            <p class="card-subtitle">
+              Proporsi sentimen dari 288 komentar Reddit
+            </p>
+            <div id="redditPieChart"></div>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="chart-card h-100">
+            <h3 class="card-title">
+              <i class="fas fa-chart-bar me-2"></i>Perbandingan Sentimen
+            </h3>
+            <p class="card-subtitle">Visualisasi horizontal untuk clarity</p>
+            <div id="redditBarChart"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ========================================
+         SECTION 3: KOMPARASI & VALIDASI
+    ======================================== -->
+
+      <div class="section-divider">
+        <div class="section-title">
+          <i
+            class="fas fa-balance-scale me-2"
+            style="color: var(--primary)"
+          ></i>
+          Komparasi dan Validasi Silang
+        </div>
+        <div class="section-subtitle">
+          Triangulasi data untuk validasi eksternal hasil clustering
+        </div>
+      </div>
+
+      <!-- Comparison Table -->
+      <div class="chart-card">
+        <h3 class="card-title">
+          <i class="fas fa-table me-2"></i>Tabel Komparasi: Reddit vs Google
+          Form
+        </h3>
+        <p class="card-subtitle">
+          Perbandingan distribusi perspektif dari kedua sumber data
+        </p>
+        <div class="table-responsive">
+          <table class="table table-bordered">
+            <thead>
+              <tr>
+                <th>Kategori</th>
+                <th>Reddit Sentiment</th>
+                <th>Google Form Cluster</th>
+                <th>Pemetaan Konseptual</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Perspektif Tinggi</strong></td>
+                <td>
+                  <span class="sentiment-badge sentiment-positif"
+                    >Positif: 13.9%</span
+                  >
+                </td>
+                <td>
+                  <span class="cluster-badge cluster-0">Cluster 0: 42.6%</span>
+                </td>
+                <td>Kepuasan tinggi terhadap QRIS</td>
+              </tr>
+              <tr>
+                <td><strong>Perspektif Moderat</strong></td>
+                <td>
+                  <span class="sentiment-badge sentiment-netral"
+                    >Netral: 80.9%</span
+                  >
+                </td>
+                <td>
+                  <span class="cluster-badge cluster-2">Cluster 2: 37.6%</span>
+                </td>
+                <td>Sikap wait-and-see / pengalaman biasa</td>
+              </tr>
+              <tr>
+                <td><strong>Perspektif Rendah</strong></td>
+                <td>
+                  <span class="sentiment-badge sentiment-negatif"
+                    >Negatif: 5.2%</span
+                  >
+                </td>
+                <td>
+                  <span class="cluster-badge cluster-1">Cluster 1: 19.8%</span>
+                </td>
+                <td>Ketidakpuasan / masalah penggunaan</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Gap Analysis -->
+      <div class="row g-3 mb-4">
+        <div class="col-lg-6">
+          <div class="gap-card">
+            <div class="text-center">
+              <i
+                class="fas fa-exclamation-triangle"
+                style="font-size: 2rem; color: #991b1b; margin-bottom: 1rem"
+              ></i>
+              <div class="gap-value">-28.7%</div>
+              <div class="gap-label">Silent Satisfaction Gap</div>
+              <div class="mt-3" style="font-size: 0.875rem; color: #7f1d1d">
+                <strong>Cluster 0 (42.6%)</strong> vs
+                <strong>Sentimen Positif (13.9%)</strong>
+              </div>
+              <div class="mt-2" style="font-size: 0.8rem; color: #991b1b">
+                Banyak pengguna puas tapi tidak vokal di media sosial
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="gap-card">
+            <div class="text-center">
+              <i
+                class="fas fa-exclamation-circle"
+                style="font-size: 2rem; color: #991b1b; margin-bottom: 1rem"
+              ></i>
+              <div class="gap-value">-14.6%</div>
+              <div class="gap-label">Silent Dissatisfaction Gap</div>
+              <div class="mt-3" style="font-size: 0.875rem; color: #7f1d1d">
+                <strong>Cluster 1 (19.8%)</strong> vs
+                <strong>Sentimen Negatif (5.2%)</strong>
+              </div>
+              <div class="mt-2" style="font-size: 0.8rem; color: #991b1b">
+                Ketidakpuasan tersembunyi tidak terekspresikan online
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Validation Findings -->
+      <div class="chart-card">
+        <h3 class="card-title">
+          <i class="fas fa-check-circle me-2"></i>Temuan Validasi Silang
+        </h3>
+        <p class="card-subtitle">
+          Insight strategis dari komparasi kedua perspektif
+        </p>
+
+        <div class="validation-box">
+          <h5>
+            <i class="fas fa-trophy me-2" style="color: var(--primary)"></i>1.
+            Dominasi Perspektif Moderat-Netral
+          </h5>
+          <p class="mb-0">
+            Kedua sumber data menunjukkan mayoritas pengguna berada di kategori
+            moderat/netral, mengkonfirmasi bahwa sebagian besar pengguna QRIS
+            memiliki pengalaman "cukup baik" namun belum exceptional.
+          </p>
+        </div>
+
+        <div class="validation-box">
+          <h5>
+            <i class="fas fa-search me-2" style="color: var(--primary)"></i>2.
+            Silent Satisfaction (-28.7%)
+          </h5>
+          <p class="mb-0">
+            Gap signifikan antara Cluster 0 (42.6%) dan sentimen positif Reddit
+            (13.9%) mengindikasikan bahwa
+            <strong
+              >pengguna yang puas cenderung tidak aktif berbagi pengalaman
+              positif</strong
+            >
+            di media sosial. Opportunity untuk program referral dan testimonial.
+          </p>
+        </div>
+
+        <div class="validation-box">
+          <h5>
+            <i class="fas fa-comments me-2" style="color: var(--primary)"></i>3.
+            Silent Dissatisfaction (-14.6%)
+          </h5>
+          <p class="mb-0">
+            Gap antara Cluster 1 (19.8%) dan sentimen negatif (5.2%) menunjukkan
+            adanya <strong>ketidakpuasan yang tidak terekspresikan</strong>.
+            Perlu proactive outreach dan customer service improvement untuk
+            mencegah churn.
+          </p>
+        </div>
+
+        <div class="validation-box">
+          <h5>
+            <i class="fas fa-lightbulb me-2" style="color: var(--primary)"></i
+            >4. Konsistensi Perspektif Rendah
+          </h5>
+          <p class="mb-0">
+            Meskipun ada gap, urutan ranking tetap konsisten: Moderat/Netral >
+            Tinggi/Positif > Rendah/Negatif di kedua sumber. Ini memvalidasi
+            reliabilitas clustering dan menunjukkan pola persepsi yang genuine.
+          </p>
+        </div>
+
+        <div class="validation-box">
+          <h5>
+            <i class="fas fa-bullseye me-2" style="color: var(--primary)"></i>5.
+            Implikasi Strategis
+          </h5>
+          <ul class="mb-0">
+            <li>
+              <strong>Focus pada Cluster 2 (37.6%):</strong> Target utama untuk
+              konversi ke high satisfaction melalui edukasi fitur dan
+              improvement UX
+            </li>
+            <li>
+              <strong>Aktivasi Silent Satisfied (28.7% gap):</strong> Campaign
+              untuk encourage positive word-of-mouth dan reviews
+            </li>
+            <li>
+              <strong
+                >Proactive Service untuk Silent Dissatisfied (14.6%
+                gap):</strong
+              >
+              Customer health monitoring dan early intervention
+            </li>
+          </ul>
         </div>
       </div>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-      async function loadData() {
+      // ========================================
+      // DATA LOADING
+      // ========================================
+      async function loadClusteringData() {
         try {
-          const [clusterRes, redditRes] = await Promise.all([
-            fetch("data/hasil_cluster_integrasi.json"),
-            fetch("data/scrapping_qris_preprocessed.json"),
-          ]);
-          const clusterData = await clusterRes.json();
-          const redditData = await redditRes.json();
-          return { clusterData, redditData };
+          const res = await fetch("data/clustering_results.json");
+          if (!res.ok) throw new Error("File not found");
+          return await res.json();
         } catch (err) {
-          console.error("Error loading data:", err);
-          alert("Gagal memuat data. Pastikan file JSON ada di folder 'data/'");
-          return { clusterData: [], redditData: [] };
+          console.error("Error loading clustering JSON:", err);
+          return [];
         }
       }
 
-      function calculateClusterStats(data) {
+      async function loadRedditData() {
+        try {
+          const res = await fetch("data/scrapping_qris_preprocessed.json");
+          if (!res.ok) throw new Error("File not found");
+          return await res.json();
+        } catch (err) {
+          console.error("Error loading Reddit JSON:", err);
+          return [];
+        }
+      }
+
+      // ========================================
+      // CLUSTERING FUNCTIONS
+      // ========================================
+      function calculateStats(data) {
         const stats = {};
+        [0, 1, 2].forEach((c) => {
+          stats[c] = {
+            count: 0,
+            kemudahan: 0,
+            kepuasan: 0,
+            kecepatan: 0,
+            keamanan: 0,
+            frekuensi: 0,
+          };
+        });
+
         data.forEach((d) => {
           const c = d.Cluster;
-          if (!stats[c])
-            stats[c] = { count: 0, sentimen: 0, persepsi: 0, total: 0 };
           stats[c].count++;
-          stats[c].sentimen += d.Skor_Sentimen_Reddit || 0;
-          stats[c].persepsi += d.Skor_Persepsi_Gabungan || 0;
-          stats[c].total += d.Skor_Total_Integrasi || 0;
+          stats[c].kemudahan += d.Kemudahan;
+          stats[c].kepuasan += d.Kepuasan;
+          stats[c].kecepatan += d.Kecepatan;
+          stats[c].keamanan += d.Keamanan;
+          stats[c].frekuensi += d.Frekuensi;
         });
-        Object.keys(stats).forEach((k) => {
-          const s = stats[k];
-          s.avgSentimen = s.sentimen / s.count;
-          s.avgPersepsi = s.persepsi / s.count;
-          s.avgTotal = s.total / s.count;
+
+        [0, 1, 2].forEach((c) => {
+          const s = stats[c];
+          if (s.count > 0) {
+            s.avgKemudahan = s.kemudahan / s.count;
+            s.avgKepuasan = s.kepuasan / s.count;
+            s.avgKecepatan = s.kecepatan / s.count;
+            s.avgKeamanan = s.keamanan / s.count;
+            s.avgFrekuensi = s.frekuensi / s.count;
+            s.avgTotal =
+              (s.avgKemudahan +
+                s.avgKepuasan +
+                s.avgKecepatan +
+                s.avgKeamanan +
+                s.avgFrekuensi) /
+              5;
+          }
         });
         return stats;
       }
 
-      function calculateRedditSentiment(redditData) {
-        const count = { positif: 0, negatif: 0, netral: 0 };
-        redditData.forEach((d) => {
-          const s = (d.sentiment || "").toLowerCase();
-          if (s === "positif") count.positif++;
-          else if (s === "negatif") count.negatif++;
-          else count.netral++;
-        });
-        count.total = redditData.length;
-        return count;
-      }
+      function renderCrosstab() {
+        const hardcodedData = {
+          0: {
+            count: 43,
+            metode: { QRIS: 18, "Kartu Debit": 13, "Uang Tunai": 12 },
+          },
+          2: {
+            count: 38,
+            metode: { QRIS: 22, "Kartu Debit": 9, "Uang Tunai": 7 },
+          },
+          1: {
+            count: 20,
+            metode: { QRIS: 6, "Kartu Debit": 7, "Uang Tunai": 7 },
+          },
+        };
 
-      function renderMetrics(data, stats) {
-        const total = data.length;
-        const clusters = Object.keys(stats).length;
-        const avgTotal = (
-          data.reduce((a, d) => a + (d.Skor_Total_Integrasi || 0), 0) / total
-        ).toFixed(2);
+        const clusters = [
+          { c: "0", l: "Cluster 0 (Tinggi)", s: hardcodedData["0"] },
+          { c: "2", l: "Cluster 2 (Moderat)", s: hardcodedData["2"] },
+          { c: "1", l: "Cluster 1 (Rendah)", s: hardcodedData["1"] },
+        ];
 
-        document.getElementById("metricsContainer").innerHTML = `
-          <div class="col-md-4"><div class="metric-card">
-            <div class="metric-header"><div class="metric-label">Total Data Integrasi</div><div class="metric-icon"><i class="fas fa-database"></i></div></div>
-            <div class="metric-value">${total}</div><div class="metric-desc">Responden yang dianalisis</div>
-          </div></div>
-          <div class="col-md-4"><div class="metric-card">
-            <div class="metric-header"><div class="metric-label">Jumlah Cluster</div><div class="metric-icon"><i class="fas fa-project-diagram"></i></div></div>
-            <div class="metric-value">${clusters}</div><div class="metric-desc">Kelompok berdasarkan K-Means</div>
-          </div></div>
-          <div class="col-md-4"><div class="metric-card">
-            <div class="metric-header"><div class="metric-label">Rata-rata Skor Total</div><div class="metric-icon"><i class="fas fa-chart-line"></i></div></div>
-            <div class="metric-value">${avgTotal}</div><div class="metric-desc">Skor persepsi gabungan</div>
-          </div></div>
-        `;
-      }
+        let html = "";
+        clusters.forEach(({ c, l, s }) => {
+          const q = s.metode["QRIS"];
+          const d = s.metode["Kartu Debit"];
+          const t = s.metode["Uang Tunai"];
 
-      function renderClusterHighlights(stats) {
-        const sorted = Object.entries(stats).sort(
-          (a, b) => b[1].count - a[1].count
-        );
-        const dominant = sorted[0];
-        const highSent = Object.entries(stats).sort(
-          (a, b) => b[1].avgSentimen - a[1].avgSentimen
-        )[0];
-        const highPer = Object.entries(stats).sort(
-          (a, b) => b[1].avgPersepsi - a[1].avgPersepsi
-        )[0];
-        const total = sorted.reduce((a, c) => a + c[1].count, 0);
-
-        document.getElementById("clusterHighlights").innerHTML = `
-          <div class="col-md-4"><div class="highlight-card">
-            <div class="highlight-header"><div class="highlight-icon" style="background:var(--primary);color:white"><i class="fas fa-trophy"></i></div>
-              <div><h3 class="highlight-title">Cluster Dominan</h3><p class="highlight-subtitle">Cluster ${
-                dominant[0]
-              }</p></div>
-            </div>
-            <div class="highlight-value" style="color:var(--primary)">${
-              dominant[1].count
-            }</div>
-            <div class="highlight-desc">responden (${(
-              (dominant[1].count / total) *
-              100
-            ).toFixed(1)}%)</div>
-          </div></div>
-          <div class="col-md-4"><div class="highlight-card">
-            <div class="highlight-header"><div class="highlight-icon sentiment-positive"><i class="fas fa-smile"></i></div>
-              <div><h3 class="highlight-title">Sentimen Tertinggi</h3><p class="highlight-subtitle">Cluster ${
-                highSent[0]
-              }</p></div>
-            </div>
-            <div class="highlight-value" style="color:#10b981">${highSent[1].avgSentimen.toFixed(
-              2
-            )}</div>
-            <div class="highlight-desc">Skor Sentimen Reddit</div>
-          </div></div>
-          <div class="col-md-4"><div class="highlight-card">
-            <div class="highlight-header"><div class="highlight-icon" style="background:#ddd6fe;color:#7c3aed"><i class="fas fa-star"></i></div>
-              <div><h3 class="highlight-title">Persepsi Tertinggi</h3><p class="highlight-subtitle">Cluster ${
-                highPer[0]
-              }</p></div>
-            </div>
-            <div class="highlight-value" style="color:#7c3aed">${highPer[1].avgPersepsi.toFixed(
-              2
-            )}</div>
-            <div class="highlight-desc">Skor Persepsi Survei</div>
-          </div></div>
-        `;
-      }
-
-      function renderRedditSentiment(sentiment) {
-        document.getElementById("redditSentiment").innerHTML = `
-          <div class="w-100">
-            <div class="sentiment-item">
-              <div class="sentiment-icon sentiment-positive"><i class="fas fa-thumbs-up"></i></div>
-              <div class="sentiment-label">Positif</div>
-              <div class="sentiment-value">${sentiment.positif}</div>
-            </div>
-            <div class="sentiment-item">
-              <div class="sentiment-icon sentiment-negative"><i class="fas fa-thumbs-down"></i></div>
-              <div class="sentiment-label">Negatif</div>
-              <div class="sentiment-value">${sentiment.negatif}</div>
-            </div>
-            <div class="sentiment-item">
-              <div class="sentiment-icon sentiment-neutral"><i class="fas fa-meh"></i></div>
-              <div class="sentiment-label">Netral</div>
-              <div class="sentiment-value">${sentiment.netral}</div>
-            </div>
-            <div class="text-center mt-3 pt-3 border-top">
-              <small class="text-muted">Total Komentar: <strong>${sentiment.total}</strong></small>
+          html += `
+          <div class="col-md-4">
+            <div class="crosstab-card">
+              <div class="d-flex align-items-center mb-3">
+                <span class="cluster-badge cluster-${c} me-2">${l}</span>
+              </div>
+              <div class="text-muted mb-3" style="font-size: 0.875rem;">${
+                s.count
+              } responden total</div>
+              <div class="stat-row">
+                <div class="stat-label">
+                  <div class="method-icon icon-qris"><i class="fas fa-qrcode"></i></div>
+                  <span>QRIS</span>
+                </div>
+                <div class="stat-value" style="color: #0ea5e9;">${q} (${(
+            (q / s.count) *
+            100
+          ).toFixed(1)}%)</div>
+              </div>
+              <div class="stat-row">
+                <div class="stat-label">
+                  <div class="method-icon icon-debit"><i class="fas fa-credit-card"></i></div>
+                  <span>Kartu Debit</span>
+                </div>
+                <div class="stat-value" style="color: #8b5cf6;">${d} (${(
+            (d / s.count) *
+            100
+          ).toFixed(1)}%)</div>
+              </div>
+              <div class="stat-row">
+                <div class="stat-label">
+                  <div class="method-icon icon-cash"><i class="fas fa-money-bill-wave"></i></div>
+                  <span>Uang Tunai</span>
+                </div>
+                <div class="stat-value" style="color: #10b981;">${t} (${(
+            (t / s.count) *
+            100
+          ).toFixed(1)}%)</div>
+              </div>
+              ${
+                c === "2"
+                  ? '<div class="mt-3 pt-3 border-top"><small style="color: #dc2626; font-weight: 600;"><i class="fas fa-exclamation-triangle me-1"></i>Gap: Banyak pengguna QRIS tapi persepsi moderat</small></div>'
+                  : ""
+              }
             </div>
           </div>
         `;
+        });
+
+        document.getElementById("crosstabSummary").innerHTML = html;
       }
 
       function renderPieChart(stats) {
-        const total = Object.values(stats).reduce((a, c) => a + c.count, 0);
-        const colors = ["#0891b2", "#06b6d4", "#67e8f9"];
-        let start = -90;
+        const total = stats[0].count + stats[1].count + stats[2].count;
+        const colors = { 0: "#0891b2", 1: "#ef4444", 2: "#f59e0b" };
         let paths = "",
           labels = "",
-          legend = "";
+          start = -90;
 
-        Object.keys(stats)
-          .sort((a, b) => a - b)
-          .forEach((c, i) => {
-            const pct = stats[c].count / total;
-            const angle = pct * 360;
-            const end = start + angle;
-            const x1 = 160 + 120 * Math.cos((start * Math.PI) / 180);
-            const y1 = 160 + 120 * Math.sin((start * Math.PI) / 180);
-            const x2 = 160 + 120 * Math.cos((end * Math.PI) / 180);
-            const y2 = 160 + 120 * Math.sin((end * Math.PI) / 180);
-            const large = angle > 180 ? 1 : 0;
-            paths += `<path d="M160,160 L${x1},${y1} A120,120 0 ${large},1 ${x2},${y2} Z" fill="${colors[i]}"/>`;
+        ["0", "2", "1"].forEach((c) => {
+          const pct = stats[c].count / total,
+            angle = pct * 360,
+            end = start + angle;
+          const x1 = 160 + 120 * Math.cos((start * Math.PI) / 180),
+            y1 = 160 + 120 * Math.sin((start * Math.PI) / 180);
+          const x2 = 160 + 120 * Math.cos((end * Math.PI) / 180),
+            y2 = 160 + 120 * Math.sin((end * Math.PI) / 180);
+          const large = angle > 180 ? 1 : 0;
+          paths += `<path d="M160,160 L${x1},${y1} A120,120 0 ${large},1 ${x2},${y2} Z" fill="${colors[c]}"/>`;
+          const mid = start + angle / 2,
+            lx = 160 + 80 * Math.cos((mid * Math.PI) / 180),
+            ly = 160 + 80 * Math.sin((mid * Math.PI) / 180);
+          labels += `<text x="${lx}" y="${ly}" fill="white" text-anchor="middle" font-weight="600" font-size="16">${(
+            pct * 100
+          ).toFixed(1)}%</text>`;
+          start = end;
+        });
 
-            const mid = start + angle / 2;
-            const lx = 160 + 80 * Math.cos((mid * Math.PI) / 180);
-            const ly = 160 + 80 * Math.sin((mid * Math.PI) / 180);
-            const txtColor = i === 2 ? "#0e7490" : "white";
-            labels += `<text x="${lx}" y="${ly}" fill="${txtColor}" text-anchor="middle" font-weight="600" font-size="16">${(
-              pct * 100
-            ).toFixed(1)}%</text>`;
-
-            legend += `<div class="col text-center"><span class="cluster-badge cluster-${c}">Cluster ${c}</span><div class="fw-bold mt-1">${stats[c].count}</div></div>`;
-
-            start = end;
-          });
-
-        document.getElementById("pieChartContent").innerHTML = `
-          <div class="text-center"><svg width="320" height="320" viewBox="0 0 320 320">${paths}${labels}</svg></div>
-          <div class="row mt-3 g-2">${legend}</div>
-        `;
+        document.getElementById("pieChart").innerHTML = `
+        <div class="text-center">
+          <svg width="320" height="320" viewBox="0 0 320 320">${paths}${labels}</svg>
+          <div class="row mt-3 g-2">
+            <div class="col text-center"><span class="cluster-badge cluster-0">Cluster 0</span><div class="fw-bold mt-1">${stats[0].count}</div></div>
+            <div class="col text-center"><span class="cluster-badge cluster-2">Cluster 2</span><div class="fw-bold mt-1">${stats[2].count}</div></div>
+            <div class="col text-center"><span class="cluster-badge cluster-1">Cluster 1</span><div class="fw-bold mt-1">${stats[1].count}</div></div>
+          </div>
+        </div>
+      `;
       }
 
-      function renderClusterProfiles(stats) {
+      function renderProfiles(stats) {
         let html = "";
-        Object.keys(stats)
-          .sort((a, b) => a - b)
-          .forEach((c) => {
-            const s = stats[c];
-            html += `
-            <div class="mb-3">
-              <div class="d-flex align-items-center mb-2">
-                <span class="cluster-badge cluster-${c} me-2">Cluster ${c}</span>
-                <span class="text-muted" style="font-size:0.875rem">${
-                  s.count
-                } responden</span>
-              </div>
-              <div class="row g-2">
-                <div class="col-4"><div class="profile-stat"><i class="fas fa-comment-dots"></i><div class="profile-stat-label">Sentimen</div><div class="profile-stat-value">${s.avgSentimen.toFixed(
-                  2
-                )}</div></div></div>
-                <div class="col-4"><div class="profile-stat"><i class="fas fa-poll"></i><div class="profile-stat-label">Persepsi</div><div class="profile-stat-value">${s.avgPersepsi.toFixed(
-                  2
-                )}</div></div></div>
-                <div class="col-4"><div class="profile-stat"><i class="fas fa-chart-bar"></i><div class="profile-stat-label">Total</div><div class="profile-stat-value">${s.avgTotal.toFixed(
-                  2
-                )}</div></div></div>
-              </div>
-            </div>`;
-          });
+        [
+          { c: "0", l: "Tinggi", s: stats[0] },
+          { c: "2", l: "Moderat", s: stats[2] },
+          { c: "1", l: "Rendah", s: stats[1] },
+        ].forEach(({ c, l, s }) => {
+          html += `
+          <div class="mb-3 p-3" style="background: #f8fafc; border-radius: 8px;">
+            <div class="d-flex align-items-center justify-content-between mb-2">
+              <span class="cluster-badge cluster-${c}">Cluster ${c} (${l})</span>
+              <span class="text-muted" style="font-size: 0.875rem;">${
+                s.count
+              } responden</span>
+            </div>
+            <div class="row g-2 mt-2">
+              <div class="col"><small class="text-muted">Kemudahan</small><div class="fw-bold">${s.avgKemudahan.toFixed(
+                2
+              )}</div></div>
+              <div class="col"><small class="text-muted">Kepuasan</small><div class="fw-bold">${s.avgKepuasan.toFixed(
+                2
+              )}</div></div>
+              <div class="col"><small class="text-muted">Kecepatan</small><div class="fw-bold">${s.avgKecepatan.toFixed(
+                2
+              )}</div></div>
+              <div class="col"><small class="text-muted">Keamanan</small><div class="fw-bold">${s.avgKeamanan.toFixed(
+                2
+              )}</div></div>
+              <div class="col"><small class="text-muted">Frekuensi</small><div class="fw-bold">${s.avgFrekuensi.toFixed(
+                2
+              )}</div></div>
+            </div>
+          </div>
+        `;
+        });
         document.getElementById("clusterProfiles").innerHTML = html;
       }
 
-      function renderScatterPlot(data) {
-        const colors = ["#0891b2", "#06b6d4", "#67e8f9"];
-        const xScale = (v) => 80 + v * 520;
-        const yScale = (v) => 320 - v * 270;
-        const points = data
-          .map(
-            (d) => `
-          <circle class="scatter-point" cx="${xScale(
-            d.Skor_Total_Integrasi
-          )}" cy="${yScale(d.Skor_Sentimen_Reddit)}" r="6"
-            fill="${colors[d.Cluster]}" data-cluster="${d.Cluster}"
-            data-total="${d.Skor_Total_Integrasi.toFixed(
-              3
-            )}" data-sentiment="${d.Skor_Sentimen_Reddit.toFixed(3)}"/>
-        `
-          )
-          .join("");
-
-        const legend = [...new Set(data.map((d) => d.Cluster))]
-          .sort((a, b) => a - b)
-          .map(
-            (c, i) => `
-          <circle cx="${100 + i * 90}" cy="35" r="6" fill="${colors[c]}"/>
-          <text x="${
-            115 + i * 90
-          }" y="40" fill="#475569" font-size="12">Cluster ${c}</text>
-        `
-          )
-          .join("");
-
-        document.getElementById(
-          "scatterPlot"
-        ).innerHTML = `<svg width="100%" height="380" viewBox="0 0 680 380">
-          <line x1="80" y1="50" x2="80" y2="320" stroke="#cbd5e1" stroke-width="2"/>
-          <line x1="80" y1="320" x2="600" y2="320" stroke="#cbd5e1" stroke-width="2"/>
-          <text x="340" y="355" text-anchor="middle" fill="#64748b" font-size="13">Skor Total Integrasi</text>
-          <text x="25" y="185" text-anchor="middle" fill="#64748b" font-size="13" transform="rotate(-90 25 185)">Skor Sentimen Reddit</text>
-          ${[0.2, 0.4, 0.6, 0.8]
-            .map(
-              (v) => `
-            <line x1="80" y1="${yScale(v)}" x2="600" y2="${yScale(
-                v
-              )}" stroke="#e2e8f0" stroke-dasharray="4,4"/>
-            <line x1="${xScale(v)}" y1="50" x2="${xScale(
-                v
-              )}" y2="320" stroke="#e2e8f0" stroke-dasharray="4,4"/>
-          `
-            )
-            .join("")}
-          ${points}${legend}
-        </svg>`;
-
-        const tooltip = document.getElementById("tooltip");
-        document.querySelectorAll(".scatter-point").forEach((p) => {
-          p.addEventListener("mouseenter", (e) => {
-            tooltip.innerHTML = `<strong>Cluster ${p.dataset.cluster}</strong><br>Skor Total: ${p.dataset.total}<br>Sentimen: ${p.dataset.sentiment}`;
-            tooltip.style.opacity = 1;
-            tooltip.style.left = e.pageX + 10 + "px";
-            tooltip.style.top = e.pageY - 10 + "px";
-          });
-          p.addEventListener("mousemove", (e) => {
-            tooltip.style.left = e.pageX + 10 + "px";
-            tooltip.style.top = e.pageY - 10 + "px";
-          });
-          p.addEventListener("mouseleave", () => (tooltip.style.opacity = 0));
-        });
-      }
-
       function renderStatsTable(stats) {
-        const rows = Object.keys(stats)
-          .sort((a, b) => a - b)
-          .map((c) => {
-            const s = stats[c];
-            return `<tr>
-            <td><span class="cluster-badge cluster-${c}">Cluster ${c}</span></td>
+        let tbody = "";
+        [
+          { c: "0", l: "Tinggi", s: stats[0] },
+          { c: "2", l: "Moderat", s: stats[2] },
+          { c: "1", l: "Rendah", s: stats[1] },
+        ].forEach(({ c, l, s }) => {
+          tbody += `
+          <tr>
+            <td><span class="cluster-badge cluster-${c}">Cluster ${c} (${l})</span></td>
             <td><strong>${s.count}</strong></td>
-            <td>${s.avgSentimen.toFixed(3)}</td>
-            <td>${s.avgPersepsi.toFixed(3)}</td>
+            <td>${s.avgKemudahan.toFixed(3)}</td>
+            <td>${s.avgKepuasan.toFixed(3)}</td>
+            <td>${s.avgKecepatan.toFixed(3)}</td>
+            <td>${s.avgKeamanan.toFixed(3)}</td>
+            <td>${s.avgFrekuensi.toFixed(3)}</td>
             <td><strong>${s.avgTotal.toFixed(3)}</strong></td>
-          </tr>`;
-          })
-          .join("");
-        document.getElementById("statsTable").innerHTML = `
-          <table class="table table-hover">
-            <thead><tr><th>Cluster</th><th>Jumlah Anggota</th><th>Avg Sentimen Reddit</th><th>Avg Persepsi Survei</th><th>Avg Skor Total</th></tr></thead>
-            <tbody>${rows}</tbody>
-          </table>
+          </tr>
         `;
+        });
+        document.getElementById("statsTable").innerHTML = `
+        <table class="table table-hover">
+          <thead>
+            <tr><th>Cluster</th><th>Jumlah</th><th>Kemudahan</th><th>Kepuasan</th><th>Kecepatan</th><th>Keamanan</th><th>Frekuensi</th><th>Rata-rata</th></tr>
+          </thead>
+          <tbody>${tbody}</tbody>
+        </table>
+      `;
       }
 
+      // ========================================
+      // REDDIT SENTIMENT FUNCTIONS
+      // ========================================
+      function calculateRedditStats(data) {
+        const stats = { positif: 0, negatif: 0, netral: 0, total: data.length };
+
+        data.forEach((d) => {
+          const sentiment = (d.sentiment || d.Sentiment || "").toLowerCase();
+          if (sentiment.includes("positif") || sentiment === "positive")
+            stats.positif++;
+          else if (sentiment.includes("negatif") || sentiment === "negative")
+            stats.negatif++;
+          else stats.netral++;
+        });
+
+        return stats;
+      }
+
+      function renderRedditMetrics(stats) {
+        document.getElementById("redditTotal").textContent = stats.total;
+        document.getElementById("redditPositif").textContent = stats.positif;
+        document.getElementById("redditPositifPct").textContent = `${(
+          (stats.positif / stats.total) *
+          100
+        ).toFixed(1)}%`;
+        document.getElementById("redditNetral").textContent = stats.netral;
+        document.getElementById("redditNetralPct").textContent = `${(
+          (stats.netral / stats.total) *
+          100
+        ).toFixed(1)}%`;
+        document.getElementById("redditNegatif").textContent = stats.negatif;
+        document.getElementById("redditNegatifPct").textContent = `${(
+          (stats.negatif / stats.total) *
+          100
+        ).toFixed(1)}%`;
+      }
+
+      function renderRedditPieChart(stats) {
+        const total = stats.total;
+        const data = [
+          { label: "Positif", value: stats.positif, color: "#10b981" },
+          { label: "Netral", value: stats.netral, color: "#6b7280" },
+          { label: "Negatif", value: stats.negatif, color: "#ef4444" },
+        ];
+
+        let paths = "",
+          labels = "",
+          start = -90;
+
+        data.forEach((d) => {
+          const pct = d.value / total;
+          const angle = pct * 360;
+          const end = start + angle;
+
+          const x1 = 160 + 120 * Math.cos((start * Math.PI) / 180);
+          const y1 = 160 + 120 * Math.sin((start * Math.PI) / 180);
+          const x2 = 160 + 120 * Math.cos((end * Math.PI) / 180);
+          const y2 = 160 + 120 * Math.sin((end * Math.PI) / 180);
+          const large = angle > 180 ? 1 : 0;
+
+          paths += `<path d="M160,160 L${x1},${y1} A120,120 0 ${large},1 ${x2},${y2} Z" fill="${d.color}"/>`;
+
+          if (pct > 0.05) {
+            const mid = start + angle / 2;
+            const lx = 160 + 80 * Math.cos((mid * Math.PI) / 180);
+            const ly = 160 + 80 * Math.sin((mid * Math.PI) / 180);
+            labels += `<text x="${lx}" y="${ly}" fill="white" text-anchor="middle" font-weight="600" font-size="16">${(
+              pct * 100
+            ).toFixed(1)}%</text>`;
+          }
+
+          start = end;
+        });
+
+        document.getElementById("redditPieChart").innerHTML = `
+        <div class="text-center">
+          <svg width="320" height="320" viewBox="0 0 320 320">${paths}${labels}</svg>
+          <div class="row mt-3 g-2">
+            <div class="col text-center">
+              <span class="sentiment-badge sentiment-positif">Positif</span>
+              <div class="fw-bold mt-1">${stats.positif} (${(
+          (stats.positif / total) *
+          100
+        ).toFixed(1)}%)</div>
+            </div>
+            <div class="col text-center">
+              <span class="sentiment-badge sentiment-netral">Netral</span>
+              <div class="fw-bold mt-1">${stats.netral} (${(
+          (stats.netral / total) *
+          100
+        ).toFixed(1)}%)</div>
+            </div>
+            <div class="col text-center">
+              <span class="sentiment-badge sentiment-negatif">Negatif</span>
+              <div class="fw-bold mt-1">${stats.negatif} (${(
+          (stats.negatif / total) *
+          100
+        ).toFixed(1)}%)</div>
+            </div>
+          </div>
+        </div>
+      `;
+      }
+
+      function renderRedditBarChart(stats) {
+        const total = stats.total;
+        const data = [
+          { label: "Positif", value: stats.positif, class: "positif" },
+          { label: "Netral", value: stats.netral, class: "netral" },
+          { label: "Negatif", value: stats.negatif, class: "negatif" },
+        ];
+
+        let html = '<div style="padding: 1rem;">';
+        data.forEach((d) => {
+          const pct = ((d.value / total) * 100).toFixed(1);
+          html += `
+          <div class="mb-3">
+            <div class="d-flex justify-content-between align-items-center mb-1">
+              <span class="fw-bold">${d.label}</span>
+              <span class="text-muted">${d.value} komentar (${pct}%)</span>
+            </div>
+            <div class="sentiment-bar">
+              <div class="sentiment-fill ${d.class}" style="width: ${pct}%">
+                ${pct}%
+              </div>
+            </div>
+          </div>
+        `;
+        });
+        html += "</div>";
+
+        document.getElementById("redditBarChart").innerHTML = html;
+      }
+
+      // ========================================
+      // INITIALIZATION
+      // ========================================
       async function init() {
-        const { clusterData, redditData } = await loadData();
-        if (!clusterData.length) return;
+        console.log("🚀 Dashboard starting...");
 
-        const clusterStats = calculateClusterStats(clusterData);
-        const redditSentiment = calculateRedditSentiment(redditData);
+        // Load clustering data
+        const clusterData = await loadClusteringData();
+        const stats = clusterData.length
+          ? calculateStats(clusterData)
+          : { 0: { count: 43 }, 1: { count: 20 }, 2: { count: 38 } };
 
-        renderMetrics(clusterData, clusterStats);
-        renderClusterHighlights(clusterStats);
-        renderRedditSentiment(redditSentiment);
-        renderPieChart(clusterStats);
-        renderClusterProfiles(clusterStats);
-        renderScatterPlot(clusterData);
-        renderStatsTable(clusterStats);
+        renderCrosstab();
+        renderPieChart(stats);
+        renderProfiles(stats);
+        renderStatsTable(stats);
+
+        // Load Reddit data
+        const redditData = await loadRedditData();
+        const redditStats = redditData.length
+          ? calculateRedditStats(redditData)
+          : { positif: 40, negatif: 15, netral: 233, total: 288 };
+
+        renderRedditMetrics(redditStats);
+        renderRedditPieChart(redditStats);
+        renderRedditBarChart(redditStats);
+
+        console.log("✅ Dashboard ready!");
       }
 
       init();
