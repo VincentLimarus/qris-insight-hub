@@ -99,7 +99,7 @@
       .section-divider {
         background: white;
         padding: 1.5rem 0;
-        margin: 2rem 0;
+        margin: 0.5rem 0;
         border-top: 3px solid var(--primary);
         border-bottom: 1px solid var(--gray-200);
       }
@@ -107,7 +107,6 @@
         font-size: 1.75rem;
         font-weight: 700;
         color: var(--gray-900);
-        margin-bottom: 0.5rem;
       }
       .section-subtitle {
         color: var(--gray-600);
@@ -309,22 +308,101 @@
         height: 100%;
       }
       .gap-card {
-        background: linear-gradient(135deg, #fee2e2, #fecaca);
-        border: 2px solid #ef4444;
+        background: white;
+        border: 1px solid var(--gray-200);
         border-radius: var(--radius);
-        padding: 1.5rem;
+        padding: 2rem;
         height: 100%;
+        position: relative;
+        overflow: hidden;
+        transition: all 0.3s ease;
+      }
+      .gap-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+        border-color: var(--primary);
+      }
+      .gap-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 4px;
+        background: linear-gradient(90deg, #ef4444, #f97316);
+      }
+      .gap-icon-wrapper {
+        width: 56px;
+        height: 56px;
+        background: linear-gradient(135deg, #fee2e2, #fecaca);
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 1.25rem;
+        box-shadow: 0 4px 12px rgba(239, 68, 68, 0.2);
+      }
+      .gap-icon-wrapper i {
+        font-size: 1.5rem;
+        color: #dc2626;
       }
       .gap-value {
-        font-size: 2.5rem;
+        font-size: 3rem;
         font-weight: 800;
-        color: #991b1b;
+        background: linear-gradient(135deg, #dc2626, #ea580c);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        margin-bottom: 0.5rem;
+        line-height: 1;
       }
       .gap-label {
+        font-size: 1.1rem;
+        font-weight: 700;
+        color: var(--gray-900);
+        margin-bottom: 1.5rem;
+      }
+      .gap-comparison {
+        background: var(--gray-100);
+        border-radius: 8px;
+        padding: 1rem;
+        margin-bottom: 1rem;
+      }
+      .gap-comparison-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0.5rem 0;
+      }
+      .gap-comparison-label {
+        font-size: 0.875rem;
+        color: var(--gray-600);
+        font-weight: 500;
+      }
+      .gap-comparison-value {
         font-size: 1rem;
-        font-weight: 600;
-        color: #7f1d1d;
-        margin-top: 0.5rem;
+        font-weight: 700;
+        color: var(--gray-900);
+      }
+      .gap-insight {
+        display: flex;
+        align-items: flex-start;
+        gap: 0.75rem;
+        padding: 1rem;
+        background: #fef3c7;
+        border-radius: 8px;
+        border-left: 3px solid #f59e0b;
+      }
+      .gap-insight i {
+        color: #d97706;
+        margin-top: 0.25rem;
+        font-size: 1rem;
+      }
+      .gap-insight-text {
+        font-size: 0.875rem;
+        color: #78350f;
+        font-weight: 500;
+        line-height: 1.5;
       }
       .sentiment-bar {
         background: var(--gray-200);
@@ -354,11 +432,61 @@
         background: #6b7280;
       }
       .validation-box {
-        background: #f0f9ff;
+        background: linear-gradient(to right, #f0f9ff, #ffffff);
+        border: 1px solid #e0f2fe;
         border-left: 4px solid var(--primary);
-        padding: 1rem;
-        margin-bottom: 1rem;
-        border-radius: 4px;
+        padding: 1.5rem;
+        margin-bottom: 1.25rem;
+        border-radius: var(--radius);
+        box-shadow: 0 2px 8px rgba(14, 165, 233, 0.08);
+        transition: all 0.3s ease;
+      }
+      .validation-box:hover {
+        transform: translateX(4px);
+        box-shadow: 0 4px 12px rgba(14, 165, 233, 0.15);
+        border-left-width: 6px;
+      }
+      .validation-box h5 {
+        font-size: 1.1rem;
+        font-weight: 700;
+        color: var(--gray-900);
+        margin-bottom: 0.75rem;
+        display: flex;
+        align-items: center;
+      }
+      .validation-box h5 i {
+        width: 32px;
+        height: 32px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: linear-gradient(
+          135deg,
+          var(--primary),
+          var(--primary-dark)
+        );
+        color: white;
+        border-radius: 8px;
+        margin-right: 0.75rem;
+        font-size: 0.9rem;
+      }
+      .validation-box p {
+        color: var(--gray-700);
+        line-height: 1.7;
+        font-size: 0.95rem;
+      }
+      .validation-box ul {
+        margin-top: 0.75rem;
+        padding-left: 1.5rem;
+      }
+      .validation-box li {
+        color: var(--gray-700);
+        margin-bottom: 0.5rem;
+        line-height: 1.7;
+      }
+      .validation-box li strong {
+        color: var(--gray-900);
+        font-weight: 600;
       }
     </style>
   </head>
@@ -432,11 +560,11 @@
         <div class="section-title">
           <i
             class="fas fa-project-diagram me-2"
-            style="color: var(--primary)"
+            style="color: var(--primary); margin-left: 10px"
           ></i>
           Analisis Clustering Google Form
         </div>
-        <div class="section-subtitle">
+        <div class="section-subtitle" style="margin-left: 10px">
           Segmentasi persepsi pengguna berdasarkan 5 variabel
         </div>
       </div>
@@ -560,10 +688,13 @@
 
       <div class="section-divider">
         <div class="section-title">
-          <i class="fab fa-reddit me-2" style="color: #ff4500"></i>
+          <i
+            class="fab fa-reddit me-2"
+            style="color: #ff4500; margin-left: 10px"
+          ></i>
           Analisis Sentimen Reddit
         </div>
-        <div class="section-subtitle">
+        <div class="section-subtitle" style="margin-left: 10px">
           Opini publik organik dari media sosial menggunakan Naïve Bayes
         </div>
       </div>
@@ -646,11 +777,11 @@
         <div class="section-title">
           <i
             class="fas fa-balance-scale me-2"
-            style="color: var(--primary)"
+            style="color: var(--primary); margin-left: 10px"
           ></i>
           Komparasi dan Validasi Silang
         </div>
-        <div class="section-subtitle">
+        <div class="section-subtitle" style="margin-left: 10px">
           Triangulasi data untuk validasi eksternal hasil clustering
         </div>
       </div>
@@ -716,22 +847,29 @@
         </div>
       </div>
 
-      <!-- Gap Analysis -->
-      <div class="row g-3 mb-4">
+      <div class="row g-4 mb-4">
         <div class="col-lg-6">
           <div class="gap-card">
             <div class="text-center">
-              <i
-                class="fas fa-exclamation-triangle"
-                style="font-size: 2rem; color: #991b1b; margin-bottom: 1rem"
-              ></i>
+              <div class="gap-icon-wrapper">
+                <i class="fas fa-exclamation-triangle"></i>
+              </div>
               <div class="gap-value">-28.7%</div>
               <div class="gap-label">Silent Satisfaction Gap</div>
-              <div class="mt-3" style="font-size: 0.875rem; color: #7f1d1d">
-                <strong>Cluster 0 (42.6%)</strong> vs
-                <strong>Sentimen Positif (13.9%)</strong>
+            </div>
+            <div class="gap-comparison">
+              <div class="gap-comparison-row">
+                <span class="gap-comparison-label">Cluster 0 (Satisfied)</span>
+                <span class="gap-comparison-value">42.6%</span>
               </div>
-              <div class="mt-2" style="font-size: 0.8rem; color: #991b1b">
+              <div class="gap-comparison-row">
+                <span class="gap-comparison-label">Sentimen Positif</span>
+                <span class="gap-comparison-value">13.9%</span>
+              </div>
+            </div>
+            <div class="gap-insight">
+              <i class="fas fa-lightbulb"></i>
+              <div class="gap-insight-text">
                 Banyak pengguna puas tapi tidak vokal di media sosial
               </div>
             </div>
@@ -740,17 +878,27 @@
         <div class="col-lg-6">
           <div class="gap-card">
             <div class="text-center">
-              <i
-                class="fas fa-exclamation-circle"
-                style="font-size: 2rem; color: #991b1b; margin-bottom: 1rem"
-              ></i>
+              <div class="gap-icon-wrapper">
+                <i class="fas fa-exclamation-circle"></i>
+              </div>
               <div class="gap-value">-14.6%</div>
               <div class="gap-label">Silent Dissatisfaction Gap</div>
-              <div class="mt-3" style="font-size: 0.875rem; color: #7f1d1d">
-                <strong>Cluster 1 (19.8%)</strong> vs
-                <strong>Sentimen Negatif (5.2%)</strong>
+            </div>
+            <div class="gap-comparison">
+              <div class="gap-comparison-row">
+                <span class="gap-comparison-label"
+                  >Cluster 1 (Dissatisfied)</span
+                >
+                <span class="gap-comparison-value">19.8%</span>
               </div>
-              <div class="mt-2" style="font-size: 0.8rem; color: #991b1b">
+              <div class="gap-comparison-row">
+                <span class="gap-comparison-label">Sentimen Negatif</span>
+                <span class="gap-comparison-value">5.2%</span>
+              </div>
+            </div>
+            <div class="gap-insight">
+              <i class="fas fa-lightbulb"></i>
+              <div class="gap-insight-text">
                 Ketidakpuasan tersembunyi tidak terekspresikan online
               </div>
             </div>
@@ -769,8 +917,8 @@
 
         <div class="validation-box">
           <h5>
-            <i class="fas fa-trophy me-2" style="color: var(--primary)"></i>1.
-            Dominasi Perspektif Moderat-Netral
+            <i class="fas fa-trophy me-2"></i>1. Dominasi Perspektif
+            Moderat-Netral
           </h5>
           <p class="mb-0">
             Kedua sumber data menunjukkan mayoritas pengguna berada di kategori
@@ -781,8 +929,7 @@
 
         <div class="validation-box">
           <h5>
-            <i class="fas fa-search me-2" style="color: var(--primary)"></i>2.
-            Silent Satisfaction (-28.7%)
+            <i class="fas fa-search me-2"></i>2. Silent Satisfaction (-28.7%)
           </h5>
           <p class="mb-0">
             Gap signifikan antara Cluster 0 (42.6%) dan sentimen positif Reddit
@@ -797,8 +944,8 @@
 
         <div class="validation-box">
           <h5>
-            <i class="fas fa-comments me-2" style="color: var(--primary)"></i>3.
-            Silent Dissatisfaction (-14.6%)
+            <i class="fas fa-comments me-2"></i>3. Silent Dissatisfaction
+            (-14.6%)
           </h5>
           <p class="mb-0">
             Gap antara Cluster 1 (19.8%) dan sentimen negatif (5.2%) menunjukkan
@@ -810,8 +957,8 @@
 
         <div class="validation-box">
           <h5>
-            <i class="fas fa-lightbulb me-2" style="color: var(--primary)"></i
-            >4. Konsistensi Perspektif Rendah
+            <i class="fas fa-lightbulb me-2"></i>4. Konsistensi Perspektif
+            Rendah
           </h5>
           <p class="mb-0">
             Meskipun ada gap, urutan ranking tetap konsisten: Moderat/Netral >
@@ -821,10 +968,7 @@
         </div>
 
         <div class="validation-box">
-          <h5>
-            <i class="fas fa-bullseye me-2" style="color: var(--primary)"></i>5.
-            Implikasi Strategis
-          </h5>
+          <h5><i class="fas fa-bullseye me-2"></i>5. Implikasi Strategis</h5>
           <ul class="mb-0">
             <li>
               <strong>Focus pada Cluster 2 (37.6%):</strong> Target utama untuk
